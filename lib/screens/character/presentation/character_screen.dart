@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -188,19 +186,19 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
           }
           return index == characterState?.length
               ? Consumer(builder: (context, PreferencesRef, child) {
-                final loadingData = ref.watch(characterNotifierProvider.select((value) => value.loadingData));
-                return loadingData.when(data: (loadingData) {
-                  print("#@@@@@@@@@@@@@@ getting cararesssasasas");
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    ref.read(characterNotifierProvider.notifier).getCharacter();
+                  final loadingData = ref.watch(characterNotifierProvider.select((value) => value.loadingData));
+                  return loadingData.when(data: (loadingData) {
+                    print("#@@@@@@@@@@@@@@ getting cararesssasasas");
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      ref.read(characterNotifierProvider.notifier).getCharacter();
+                    });
+                    return SizedBox.shrink();
+                  }, error: (error, _) {
+                    return Center(child: Text(error.getErrorMessage()));
+                  }, loading: () {
+                    return Center(child: CircularProgressIndicator());
                   });
-                  return SizedBox.shrink();
-                }, error: (error, _) {
-                  return Center(child: Text(error.getErrorMessage()));
-                }, loading: () {
-                  return Center(child: CircularProgressIndicator());
-                });
-              })
+                })
               : GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, AppRoutes.characterDetailsRoute,

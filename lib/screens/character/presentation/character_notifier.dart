@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -25,7 +24,6 @@ class CharacterNotifier extends _$CharacterNotifier {
   }
 
   void getCharacter() async {
-
     print('get charactes data $state');
     try {
       final Character? characters;
@@ -44,9 +42,7 @@ class CharacterNotifier extends _$CharacterNotifier {
           getCharacterDataForSearch: AsyncData([...(state.getCharacterData.value ?? []), ...characters?.results ?? []]),
           totalPage: characters?.page ?? 0,
           loadingData: AsyncData(null),
-          currentPage: state.currentPage + 1
-      );
-
+          currentPage: state.currentPage + 1);
     } catch (e) {
       print('error==>$e');
       if (state.currentPage != 1) {
