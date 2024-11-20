@@ -50,7 +50,7 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
         afterOpenSettings = false;
       }
     } else {
-      ref.read(recorderProvider.notifier).stopRecorder();
+      await ref.read(recorderProvider.notifier).stopRecorder();
     }
     if (state == AppLifecycleState.paused) {
       afterOpenSettings = true;
@@ -66,6 +66,24 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(
+      recorderProvider.select((value) => value.recordingPath),
+      (previous, next) {
+        if (next != null) {
+          widget.recordingCompleted.call(next);
+          _animationController?.stop();
+        }
+      },
+    );
+    ref.listen(
+      recorderProvider.select((value) => value.recordingInProgress),
+      (previous, next) {
+        if (next.value == true) {
+          _animationController?.repeat();
+        }
+      },
+    );
+
     return Container(
       height: 180,
       width: double.infinity,
@@ -90,69 +108,69 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
                         child: Consumer(
                           builder: (context, ref, child) {
                             final recorderInitialize = ref.watch(recorderProvider.select((value) => value.recorderInitialize));
-                            return recorderInitialize.when(data: (recorderInitialize) {
-                              return recorderInitialize
-                                  ? InkWell(
-                                      onTap: () {
-                                        ref.read(recorderProvider.notifier).startRecorder();
-                                      },
-                                      child: _getStartRecordingWidget(),
-                                    )
-                                  : Consumer(
-                                      builder: (context, ref, child) {
-                                        final recordingData = ref.watch(recorderProvider.select((value) => value.recordingData));
-                                        return recordingData.when(
-                                          data: (recordingData) {
-                                            if (!recordingData) {
-                                              final recordingPath = ref.watch(recorderProvider.select((value) => value.recordingPath));
-                                              widget.recordingCompleted.call(recordingPath!);
-                                              _animationController?.stop();
-                                            } else {
-                                              _animationController?.repeat();
-                                            }
-                                            return Stack(
-                                              children: [
-                                                Center(
-                                                  child: Lottie.asset(
-                                                    AppLottie.lottieAudio,
-                                                    controller: _animationController,
-                                                  ),
-                                                ),
-                                                Align(
-                                                  alignment: Alignment.bottomCenter,
-                                                  child: IntrinsicHeight(
-                                                    child: Row(
-                                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                      children: [
-                                                        _getStopButton(),
-                                                        _getRecordingSlider(),
-                                                        _getRecorderTimer(),
-                                                      ],
+                            return recorderInitialize.when(
+                              data: (recorderInitialize) {
+                                return Consumer(
+                                  builder: (context, ref, child) {
+                                    final recordingInProgress = ref.watch(recorderProvider.select((value) => value.recordingInProgress));
+                                    return recordingInProgress.when(
+                                      data: (recordingInProgress) {
+                                        if (recordingInProgress) {
+                                          print('called@@@@@@@@@@@@');
+                                        }
+                                        return recordingInProgress
+                                            ? Stack(
+                                                children: [
+                                                  Center(
+                                                    child: Lottie.asset(
+                                                      AppLottie.lottieAudio,
+                                                      controller: _animationController,
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                          error: (error, _) {
-                                            return _getErrorWidget(error.toString());
-                                          },
-                                          loading: () {
-                                            return Center(
-                                              child: CircularProgressIndicator(
-                                                color: Colors.white,
-                                              ),
-                                            );
-                                          },
+                                                  Align(
+                                                    alignment: Alignment.bottomCenter,
+                                                    child: IntrinsicHeight(
+                                                      child: Row(
+                                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                          _getStopButton(),
+                                                          _getRecordingSlider(),
+                                                          _getRecorderTimer(),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            : InkWell(
+                                                onTap: () {
+                                                  ref.read(recorderProvider.notifier).startRecorder();
+                                                },
+                                                child: _getStartRecordingWidget(),
+                                              );
+                                      },
+                                      error: (error, _) {
+                                        return _getErrorWidget(error.toString());
+                                      },
+                                      loading: () {
+                                        return Center(
+                                          child: CircularProgressIndicator(
+                                            color: Colors.white,
+                                          ),
                                         );
                                       },
                                     );
-                            }, error: (error, _) {
-                              return _getErrorWidget(error.toString());
-                            }, loading: () {
-                              return _getLoader();
-                            });
+                                  },
+                                );
+                              },
+                              error: (error, _) {
+                                return _getErrorWidget(error.toString());
+                              },
+                              loading: () {
+                                return _getLoader();
+                              },
+                            );
                           },
                         ),
                       ),
@@ -239,8 +257,8 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
     return Padding(
       padding: const EdgeInsets.only(left: 16.0),
       child: InkWell(
-        onTap: () {
-          ref.read(recorderProvider.notifier).stopRecorder();
+        onTap: () async {
+          await ref.read(recorderProvider.notifier).stopRecorder();
         },
         child: Container(
           height: 18,

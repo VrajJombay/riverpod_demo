@@ -26,7 +26,7 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((callback) {
-      ref.read(playerProvider.notifier).init(widget.fileUrl);
+      ref.read(playerProvider(widget.fileUrl).notifier).init();
     });
     _animationController = AnimationController(
       vsync: this,
@@ -36,10 +36,10 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
     super.didChangeAppLifecycleState(state);
     if (state != AppLifecycleState.resumed) {
-      ref.read(playerProvider.notifier).pausePlayer();
+      await ref.read(playerProvider(widget.fileUrl).notifier).pausePlayer();
     }
   }
 
@@ -60,7 +60,7 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
       ),
       child: Consumer(
         builder: (context, ref, child) {
-          final playerData = ref.watch(playerProvider.select((value) => value.playerData));
+          final playerData = ref.watch(playerProvider(widget.fileUrl).select((value) => value.playerData));
           return playerData.when(
             data: (playerData) {
               if (playerData) {
@@ -110,8 +110,8 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
     return Padding(
       padding: const EdgeInsets.only(left: 16.0),
       child: InkWell(
-        onTap: () {
-          ref.read(playerProvider.notifier).playAndPausePlayer();
+        onTap: () async {
+          await ref.read(playerProvider(widget.fileUrl).notifier).playAndPausePlayer();
         },
         child: playerData
             ? Icon(
@@ -131,8 +131,8 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
   Widget _getPlayerSlider() {
     return Consumer(
       builder: (context, ref, child) {
-        final playerSliderDuration = ref.watch(playerProvider.select((value) => value.playerSliderDuration));
-        final maxDuration = ref.read(playerProvider).maxDuration;
+        final playerSliderDuration = ref.watch(playerProvider(widget.fileUrl).select((value) => value.playerSliderDuration));
+        final maxDuration = ref.read(playerProvider(widget.fileUrl)).maxDuration;
         return Expanded(
           child: Slider(
             min: 0,
@@ -141,7 +141,7 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
             inactiveColor: Colors.grey,
             value: min(playerSliderDuration, maxDuration),
             onChanged: (value) {
-              ref.read(playerProvider.notifier).seekTo(value);
+              ref.read(playerProvider(widget.fileUrl).notifier).seekTo(value);
             },
           ),
         );
@@ -152,7 +152,7 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
   Widget _getPlayerTimer() {
     return Consumer(
       builder: (context, ref, child) {
-        final playerTime = ref.watch(playerProvider.select((value) => value.playerTime));
+        final playerTime = ref.watch(playerProvider(widget.fileUrl).select((value) => value.playerTime));
         return Padding(
           padding: const EdgeInsets.only(right: 16.0),
           child: SizedBox(
@@ -173,8 +173,8 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: InkWell(
-        onTap: () {
-          ref.read(playerProvider.notifier).pausePlayer();
+        onTap: () async {
+          await ref.read(playerProvider(widget.fileUrl).notifier).pausePlayer();
           showDialog(
             context: context,
             builder: (context) {

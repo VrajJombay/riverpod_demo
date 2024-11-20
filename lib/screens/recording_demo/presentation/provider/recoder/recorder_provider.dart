@@ -16,6 +16,7 @@ class Recorder extends _$Recorder {
   FlutterSoundRecorder _recorder = FlutterSoundRecorder();
   Codec _codec = Codec.aacADTS;
   StreamSubscription? _recorderSubscription;
+  AudioSession? session;
 
   @override
   RecorderState build() {
@@ -41,24 +42,24 @@ class Recorder extends _$Recorder {
     state = state.copyWith(recorderInitialize: AsyncLoading());
     try {
       await _openRecorder();
-      final session = await AudioSession.instance;
-      await session.configure(
+      session = await AudioSession.instance;
+      await session?.configure(
         AudioSessionConfiguration(
           avAudioSessionCategory: AVAudioSessionCategory.playAndRecord,
           avAudioSessionCategoryOptions: AVAudioSessionCategoryOptions.allowBluetooth | AVAudioSessionCategoryOptions.defaultToSpeaker,
           avAudioSessionMode: AVAudioSessionMode.spokenAudio,
           avAudioSessionRouteSharingPolicy: AVAudioSessionRouteSharingPolicy.defaultPolicy,
-          avAudioSessionSetActiveOptions: AVAudioSessionSetActiveOptions.none,
+          avAudioSessionSetActiveOptions: AVAudioSessionSetActiveOptions.notifyOthersOnDeactivation,
           androidAudioAttributes: const AndroidAudioAttributes(
             contentType: AndroidAudioContentType.speech,
             flags: AndroidAudioFlags.none,
             usage: AndroidAudioUsage.voiceCommunication,
           ),
-          androidAudioFocusGainType: AndroidAudioFocusGainType.gain,
+          androidAudioFocusGainType: AndroidAudioFocusGainType.gainTransientExclusive,
           androidWillPauseWhenDucked: true,
         ),
       );
-      await session.setActive(true);
+
       state = state.copyWith(recorderInitialize: AsyncData(true));
     } catch (e, stackTrace) {
       state = state.copyWith(recorderInitialize: AsyncError(e, stackTrace));
@@ -72,63 +73,69 @@ class Recorder extends _$Recorder {
   }
 
   Future<void> startRecorder() async {
-    state = state.copyWith(recordingData: AsyncLoading(), recorderInitialize: AsyncData(false));
+    await session?.setActive(true);
+    state = state.copyWith(recordingInProgress: AsyncLoading());
     try {
       var path = '';
       var tempDir = await getTemporaryDirectory();
       path = '${tempDir.path}/${DateTime.now().day}_${DateTime.now().month}_${DateTime.now().year}_${DateTime.now().millisecond}${ext[_codec.index]}';
-      _recorder.startRecorder(
+      await _recorder.startRecorder(
         toFile: path,
         codec: _codec,
-        sampleRate: 44100,
-        bitRate: 128000,
+        // sampleRate: 44100,
+        // bitRate: 128000,
       );
       print('fileUrl@@1==>$path');
-      state = state.copyWith(recordingData: AsyncData(true), recordingPath: path);
-      _recorderSubscription = _recorder.onProgress!.listen((position) async {
+      state = state.copyWith(recordingInProgress: AsyncData(true));
+      _recorderSubscription = _recorder.onProgress?.listen((position) async {
         if (position.duration.inMilliseconds.toDouble() <= 60000.0 && position.duration.inMilliseconds.toDouble() >= 0.0) {
           var date = DateTime.fromMillisecondsSinceEpoch(position.duration.inMilliseconds, isUtc: true);
           var txt = DateFormat('mm:ss').format(date);
           state = state.copyWith(recordingSliderDuration: position.duration.inMilliseconds.toDouble(), recordingTime: txt);
         } else {
-          stopRecorder();
+          await stopRecorder();
         }
       });
     } catch (e, stackTrace) {
-      state = state.copyWith(recordingData: AsyncError(e, stackTrace));
+      state = state.copyWith(recordingInProgress: AsyncError(e, stackTrace));
     }
   }
 
-  void stopRecorder() async {
+  Future<void> stopRecorder() async {
     try {
       if (_recorder.isRecording) {
         String? fileUrl = await _recorder.stopRecorder();
         print('fileUrl@@2==>$fileUrl');
-        state = state.copyWith(recordingData: AsyncData(false), recordingPath: fileUrl ?? state.recordingPath);
+        if (fileUrl != null) {
+          await session?.setActive(false);
+          state = state.copyWith(recordingPath: fileUrl);
+          await Future.delayed(Duration(milliseconds: 10));
+          state = state.copyWith(
+            recordingInProgress: AsyncData(false),
+          );
+        } else {
+          throw Exception('Recording not found');
+        }
       }
     } catch (e, stackTrace) {
-      state = state.copyWith(recordingData: AsyncError(e, stackTrace));
+      state = state.copyWith(recordingInProgress: AsyncError(e, stackTrace));
     }
   }
 
-  void _cancelRecordSubscription() {
+  Future<void> _cancelRecordSubscription() async {
     if (_recorderSubscription != null) {
-      _recorderSubscription?.cancel();
+      await _recorderSubscription?.cancel();
       _recorderSubscription = null;
     }
   }
 
   Future<void> _closeRecorder() async {
-    try {
-      await _recorder.closeRecorder();
-    } catch (e, stackTrace) {
-      state = state.copyWith(recordingData: AsyncError(e, stackTrace));
-    }
+    await _recorder.closeRecorder();
   }
 
   void _onDispose() async {
     print('dispose called');
-    _cancelRecordSubscription();
+    await _cancelRecordSubscription();
     await _closeRecorder();
   }
 }

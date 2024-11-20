@@ -8,7 +8,7 @@ part 'recorder_state.freezed.dart';
 class RecorderState with _$RecorderState {
   factory RecorderState({
     @Default(AsyncLoading()) AsyncValue<bool> recorderInitialize,
-    @Default(AsyncLoading()) AsyncValue<bool> recordingData,
+    @Default(AsyncData(false)) AsyncValue<bool> recordingInProgress,
     @Default(0.0) double recordingSliderDuration,
     @Default(null) String? recordingPath,
     @Default(AsyncLoading()) AsyncValue<PermissionStatus> permissionStatus,

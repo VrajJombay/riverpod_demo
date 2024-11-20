@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RecorderState {
   AsyncValue<bool> get recorderInitialize => throw _privateConstructorUsedError;
 
-  AsyncValue<bool> get recordingData => throw _privateConstructorUsedError;
+  AsyncValue<bool> get recordingInProgress => throw _privateConstructorUsedError;
 
   double get recordingSliderDuration => throw _privateConstructorUsedError;
 
@@ -39,7 +39,7 @@ abstract class $RecorderStateCopyWith<$Res> {
   @useResult
   $Res call(
       {AsyncValue<bool> recorderInitialize,
-      AsyncValue<bool> recordingData,
+      AsyncValue<bool> recordingInProgress,
       double recordingSliderDuration,
       String? recordingPath,
       AsyncValue<PermissionStatus> permissionStatus,
@@ -60,7 +60,7 @@ class _$RecorderStateCopyWithImpl<$Res, $Val extends RecorderState> implements $
   @override
   $Res call({
     Object? recorderInitialize = null,
-    Object? recordingData = null,
+    Object? recordingInProgress = null,
     Object? recordingSliderDuration = null,
     Object? recordingPath = freezed,
     Object? permissionStatus = null,
@@ -71,9 +71,9 @@ class _$RecorderStateCopyWithImpl<$Res, $Val extends RecorderState> implements $
           ? _value.recorderInitialize
           : recorderInitialize // ignore: cast_nullable_to_non_nullable
               as AsyncValue<bool>,
-      recordingData: null == recordingData
-          ? _value.recordingData
-          : recordingData // ignore: cast_nullable_to_non_nullable
+      recordingInProgress: null == recordingInProgress
+          ? _value.recordingInProgress
+          : recordingInProgress // ignore: cast_nullable_to_non_nullable
               as AsyncValue<bool>,
       recordingSliderDuration: null == recordingSliderDuration
           ? _value.recordingSliderDuration
@@ -103,7 +103,7 @@ abstract class _$$RecorderStateImplCopyWith<$Res> implements $RecorderStateCopyW
   @useResult
   $Res call(
       {AsyncValue<bool> recorderInitialize,
-      AsyncValue<bool> recordingData,
+      AsyncValue<bool> recordingInProgress,
       double recordingSliderDuration,
       String? recordingPath,
       AsyncValue<PermissionStatus> permissionStatus,
@@ -118,7 +118,7 @@ class __$$RecorderStateImplCopyWithImpl<$Res> extends _$RecorderStateCopyWithImp
   @override
   $Res call({
     Object? recorderInitialize = null,
-    Object? recordingData = null,
+    Object? recordingInProgress = null,
     Object? recordingSliderDuration = null,
     Object? recordingPath = freezed,
     Object? permissionStatus = null,
@@ -129,9 +129,9 @@ class __$$RecorderStateImplCopyWithImpl<$Res> extends _$RecorderStateCopyWithImp
           ? _value.recorderInitialize
           : recorderInitialize // ignore: cast_nullable_to_non_nullable
               as AsyncValue<bool>,
-      recordingData: null == recordingData
-          ? _value.recordingData
-          : recordingData // ignore: cast_nullable_to_non_nullable
+      recordingInProgress: null == recordingInProgress
+          ? _value.recordingInProgress
+          : recordingInProgress // ignore: cast_nullable_to_non_nullable
               as AsyncValue<bool>,
       recordingSliderDuration: null == recordingSliderDuration
           ? _value.recordingSliderDuration
@@ -158,7 +158,7 @@ class __$$RecorderStateImplCopyWithImpl<$Res> extends _$RecorderStateCopyWithImp
 class _$RecorderStateImpl implements _RecorderState {
   _$RecorderStateImpl(
       {this.recorderInitialize = const AsyncLoading(),
-      this.recordingData = const AsyncLoading(),
+      this.recordingInProgress = const AsyncData(false),
       this.recordingSliderDuration = 0.0,
       this.recordingPath = null,
       this.permissionStatus = const AsyncLoading(),
@@ -169,7 +169,7 @@ class _$RecorderStateImpl implements _RecorderState {
   final AsyncValue<bool> recorderInitialize;
   @override
   @JsonKey()
-  final AsyncValue<bool> recordingData;
+  final AsyncValue<bool> recordingInProgress;
   @override
   @JsonKey()
   final double recordingSliderDuration;
@@ -185,7 +185,7 @@ class _$RecorderStateImpl implements _RecorderState {
 
   @override
   String toString() {
-    return 'RecorderState(recorderInitialize: $recorderInitialize, recordingData: $recordingData, recordingSliderDuration: $recordingSliderDuration, recordingPath: $recordingPath, permissionStatus: $permissionStatus, recordingTime: $recordingTime)';
+    return 'RecorderState(recorderInitialize: $recorderInitialize, recordingInProgress: $recordingInProgress, recordingSliderDuration: $recordingSliderDuration, recordingPath: $recordingPath, permissionStatus: $permissionStatus, recordingTime: $recordingTime)';
   }
 
   @override
@@ -194,7 +194,7 @@ class _$RecorderStateImpl implements _RecorderState {
         (other.runtimeType == runtimeType &&
             other is _$RecorderStateImpl &&
             (identical(other.recorderInitialize, recorderInitialize) || other.recorderInitialize == recorderInitialize) &&
-            (identical(other.recordingData, recordingData) || other.recordingData == recordingData) &&
+            (identical(other.recordingInProgress, recordingInProgress) || other.recordingInProgress == recordingInProgress) &&
             (identical(other.recordingSliderDuration, recordingSliderDuration) || other.recordingSliderDuration == recordingSliderDuration) &&
             (identical(other.recordingPath, recordingPath) || other.recordingPath == recordingPath) &&
             (identical(other.permissionStatus, permissionStatus) || other.permissionStatus == permissionStatus) &&
@@ -202,7 +202,8 @@ class _$RecorderStateImpl implements _RecorderState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, recorderInitialize, recordingData, recordingSliderDuration, recordingPath, permissionStatus, recordingTime);
+  int get hashCode =>
+      Object.hash(runtimeType, recorderInitialize, recordingInProgress, recordingSliderDuration, recordingPath, permissionStatus, recordingTime);
 
   @JsonKey(ignore: true)
   @override
@@ -213,7 +214,7 @@ class _$RecorderStateImpl implements _RecorderState {
 abstract class _RecorderState implements RecorderState {
   factory _RecorderState(
       {final AsyncValue<bool> recorderInitialize,
-      final AsyncValue<bool> recordingData,
+      final AsyncValue<bool> recordingInProgress,
       final double recordingSliderDuration,
       final String? recordingPath,
       final AsyncValue<PermissionStatus> permissionStatus,
@@ -223,7 +224,7 @@ abstract class _RecorderState implements RecorderState {
   AsyncValue<bool> get recorderInitialize;
 
   @override
-  AsyncValue<bool> get recordingData;
+  AsyncValue<bool> get recordingInProgress;
 
   @override
   double get recordingSliderDuration;

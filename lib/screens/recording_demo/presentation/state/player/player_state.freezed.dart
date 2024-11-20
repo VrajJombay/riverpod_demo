@@ -22,7 +22,7 @@ mixin _$PlayerDefaultState {
 
   double get maxDuration => throw _privateConstructorUsedError;
 
-  String? get filePath => throw _privateConstructorUsedError;
+  String get filePath => throw _privateConstructorUsedError;
 
   String get playerTime => throw _privateConstructorUsedError;
 
@@ -36,7 +36,7 @@ abstract class $PlayerDefaultStateCopyWith<$Res> {
       _$PlayerDefaultStateCopyWithImpl<$Res, PlayerDefaultState>;
 
   @useResult
-  $Res call({AsyncValue<bool> playerData, double playerSliderDuration, double maxDuration, String? filePath, String playerTime});
+  $Res call({AsyncValue<bool> playerData, double playerSliderDuration, double maxDuration, String filePath, String playerTime});
 }
 
 /// @nodoc
@@ -55,7 +55,7 @@ class _$PlayerDefaultStateCopyWithImpl<$Res, $Val extends PlayerDefaultState> im
     Object? playerData = null,
     Object? playerSliderDuration = null,
     Object? maxDuration = null,
-    Object? filePath = freezed,
+    Object? filePath = null,
     Object? playerTime = null,
   }) {
     return _then(_value.copyWith(
@@ -71,10 +71,10 @@ class _$PlayerDefaultStateCopyWithImpl<$Res, $Val extends PlayerDefaultState> im
           ? _value.maxDuration
           : maxDuration // ignore: cast_nullable_to_non_nullable
               as double,
-      filePath: freezed == filePath
+      filePath: null == filePath
           ? _value.filePath
           : filePath // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       playerTime: null == playerTime
           ? _value.playerTime
           : playerTime // ignore: cast_nullable_to_non_nullable
@@ -90,7 +90,7 @@ abstract class _$$PlayerDefaultStateImplCopyWith<$Res> implements $PlayerDefault
 
   @override
   @useResult
-  $Res call({AsyncValue<bool> playerData, double playerSliderDuration, double maxDuration, String? filePath, String playerTime});
+  $Res call({AsyncValue<bool> playerData, double playerSliderDuration, double maxDuration, String filePath, String playerTime});
 }
 
 /// @nodoc
@@ -104,7 +104,7 @@ class __$$PlayerDefaultStateImplCopyWithImpl<$Res> extends _$PlayerDefaultStateC
     Object? playerData = null,
     Object? playerSliderDuration = null,
     Object? maxDuration = null,
-    Object? filePath = freezed,
+    Object? filePath = null,
     Object? playerTime = null,
   }) {
     return _then(_$PlayerDefaultStateImpl(
@@ -120,10 +120,10 @@ class __$$PlayerDefaultStateImplCopyWithImpl<$Res> extends _$PlayerDefaultStateC
           ? _value.maxDuration
           : maxDuration // ignore: cast_nullable_to_non_nullable
               as double,
-      filePath: freezed == filePath
+      filePath: null == filePath
           ? _value.filePath
           : filePath // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       playerTime: null == playerTime
           ? _value.playerTime
           : playerTime // ignore: cast_nullable_to_non_nullable
@@ -136,7 +136,7 @@ class __$$PlayerDefaultStateImplCopyWithImpl<$Res> extends _$PlayerDefaultStateC
 
 class _$PlayerDefaultStateImpl implements _PlayerDefaultState {
   _$PlayerDefaultStateImpl(
-      {this.playerData = const AsyncLoading(), this.playerSliderDuration = 0.0, this.maxDuration = 0.0, this.filePath = null, this.playerTime = '00:00'});
+      {this.playerData = const AsyncLoading(), this.playerSliderDuration = 0.0, this.maxDuration = 0.0, required this.filePath, this.playerTime = '00:00'});
 
   @override
   @JsonKey()
@@ -148,8 +148,7 @@ class _$PlayerDefaultStateImpl implements _PlayerDefaultState {
   @JsonKey()
   final double maxDuration;
   @override
-  @JsonKey()
-  final String? filePath;
+  final String filePath;
   @override
   @JsonKey()
   final String playerTime;
@@ -186,7 +185,7 @@ abstract class _PlayerDefaultState implements PlayerDefaultState {
       {final AsyncValue<bool> playerData,
       final double playerSliderDuration,
       final double maxDuration,
-      final String? filePath,
+      required final String filePath,
       final String playerTime}) = _$PlayerDefaultStateImpl;
 
   @override
@@ -199,7 +198,7 @@ abstract class _PlayerDefaultState implements PlayerDefaultState {
   double get maxDuration;
 
   @override
-  String? get filePath;
+  String get filePath;
 
   @override
   String get playerTime;
