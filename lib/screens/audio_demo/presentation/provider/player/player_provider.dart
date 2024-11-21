@@ -5,7 +5,8 @@ import 'package:audio_session/audio_session.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_demo/screens/recording_demo/presentation/state/player/player_state.dart';
+
+import '../../state/player/player_state.dart';
 
 part 'player_provider.g.dart';
 

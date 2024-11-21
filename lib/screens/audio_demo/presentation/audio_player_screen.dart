@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_demo/screens/recording_demo/presentation/provider/audio_player/audio_player_provider.dart';
-import 'package:riverpod_demo/screens/recording_demo/presentation/widgets/player_widget.dart';
-import 'package:riverpod_demo/screens/recording_demo/presentation/widgets/recorder_widget.dart';
+import 'widgets/recorder_widget.dart';
+import 'widgets/player_widget.dart';
+import 'provider/audio_player/audio_player_provider.dart';
 
 class AudioPlayerScreen extends StatelessWidget {
   const AudioPlayerScreen({super.key, this.isNetworkUrl = false, this.networkFileUrl});
