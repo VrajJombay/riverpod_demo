@@ -4,7 +4,8 @@ import 'package:riverpod_demo/screens/character_details/presentation/character_d
 import 'package:riverpod_demo/screens/favorite/presentation/favorite_screen.dart';
 import 'package:riverpod_demo/utils/arguments.dart';
 
-import '../screens/recording_demo/presentation/audio_player_screen.dart';
+import '../screens/audio_demo/presentation/audio_player_screen.dart';
+
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
