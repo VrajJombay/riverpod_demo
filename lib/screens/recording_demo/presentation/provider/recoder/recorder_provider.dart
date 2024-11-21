@@ -31,14 +31,14 @@ class Recorder extends _$Recorder {
       print(permissionStatus);
       state = state.copyWith(permissionStatus: AsyncData(permissionStatus));
       if (permissionStatus.isGranted || permissionStatus.isLimited) {
-        init();
+        await init();
       }
     } catch (e, stackTrace) {
       state = state.copyWith(permissionStatus: AsyncError(e, stackTrace));
     }
   }
 
-  void init() async {
+  Future<void> init() async {
     state = state.copyWith(recorderInitialize: AsyncLoading());
     try {
       await _openRecorder();

@@ -144,8 +144,8 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
                                                 ],
                                               )
                                             : InkWell(
-                                                onTap: () {
-                                                  ref.read(recorderProvider.notifier).startRecorder();
+                                                onTap: () async {
+                                                  await ref.read(recorderProvider.notifier).startRecorder();
                                                 },
                                                 child: _getStartRecordingWidget(),
                                               );
@@ -311,10 +311,21 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             error.toString(),
             style: TextStyle(color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 10),
+          ElevatedButton(
+            onPressed: () async {
+              await ref.read(recorderProvider.notifier).init();
+            },
+            child: Text(
+              'Retry',
+            ),
           ),
         ],
       ),

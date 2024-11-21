@@ -25,8 +25,8 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    WidgetsBinding.instance.addPostFrameCallback((callback) {
-      ref.read(playerProvider(widget.fileUrl).notifier).init();
+    WidgetsBinding.instance.addPostFrameCallback((callback) async {
+      await ref.read(playerProvider(widget.fileUrl).notifier).init();
     });
     _animationController = AnimationController(
       vsync: this,
@@ -215,10 +215,21 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             error.toString(),
             style: TextStyle(color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 10),
+          ElevatedButton(
+            onPressed: () async {
+              await ref.read(playerProvider(widget.fileUrl).notifier).init();
+            },
+            child: Text(
+              'Retry',
+            ),
           ),
         ],
       ),

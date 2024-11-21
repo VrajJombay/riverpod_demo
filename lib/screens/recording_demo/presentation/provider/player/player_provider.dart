@@ -23,7 +23,7 @@ class Player extends _$Player {
     return PlayerDefaultState(filePath: filePath);
   }
 
-  void init() async {
+  Future<void> init() async {
     state = state.copyWith(playerData: AsyncLoading());
     try {
       await _openPlayer();
