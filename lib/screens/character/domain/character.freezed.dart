@@ -21,19 +21,22 @@ mixin _$Character {
   int? get page => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CharacterCopyWith<Character> get copyWith => throw _privateConstructorUsedError;
+  $CharacterCopyWith<Character> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CharacterCopyWith<$Res> {
-  factory $CharacterCopyWith(Character value, $Res Function(Character) then) = _$CharacterCopyWithImpl<$Res, Character>;
+  factory $CharacterCopyWith(Character value, $Res Function(Character) then) =
+      _$CharacterCopyWithImpl<$Res, Character>;
 
   @useResult
   $Res call({List<Result>? results, int? page});
 }
 
 /// @nodoc
-class _$CharacterCopyWithImpl<$Res, $Val extends Character> implements $CharacterCopyWith<$Res> {
+class _$CharacterCopyWithImpl<$Res, $Val extends Character>
+    implements $CharacterCopyWith<$Res> {
   _$CharacterCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -62,8 +65,11 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character> implements $Characte
 }
 
 /// @nodoc
-abstract class _$$CharacterImplCopyWith<$Res> implements $CharacterCopyWith<$Res> {
-  factory _$$CharacterImplCopyWith(_$CharacterImpl value, $Res Function(_$CharacterImpl) then) = __$$CharacterImplCopyWithImpl<$Res>;
+abstract class _$$CharacterImplCopyWith<$Res>
+    implements $CharacterCopyWith<$Res> {
+  factory _$$CharacterImplCopyWith(
+          _$CharacterImpl value, $Res Function(_$CharacterImpl) then) =
+      __$$CharacterImplCopyWithImpl<$Res>;
 
   @override
   @useResult
@@ -71,8 +77,12 @@ abstract class _$$CharacterImplCopyWith<$Res> implements $CharacterCopyWith<$Res
 }
 
 /// @nodoc
-class __$$CharacterImplCopyWithImpl<$Res> extends _$CharacterCopyWithImpl<$Res, _$CharacterImpl> implements _$$CharacterImplCopyWith<$Res> {
-  __$$CharacterImplCopyWithImpl(_$CharacterImpl _value, $Res Function(_$CharacterImpl) _then) : super(_value, _then);
+class __$$CharacterImplCopyWithImpl<$Res>
+    extends _$CharacterCopyWithImpl<$Res, _$CharacterImpl>
+    implements _$$CharacterImplCopyWith<$Res> {
+  __$$CharacterImplCopyWithImpl(
+      _$CharacterImpl _value, $Res Function(_$CharacterImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -96,7 +106,8 @@ class __$$CharacterImplCopyWithImpl<$Res> extends _$CharacterCopyWithImpl<$Res, 
 /// @nodoc
 
 class _$CharacterImpl implements _Character {
-  _$CharacterImpl({final List<Result>? results, this.page}) : _results = results;
+  _$CharacterImpl({final List<Result>? results, this.page})
+      : _results = results;
 
   final List<Result>? _results;
 
@@ -127,16 +138,19 @@ class _$CharacterImpl implements _Character {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_results), page);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_results), page);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CharacterImplCopyWith<_$CharacterImpl> get copyWith => __$$CharacterImplCopyWithImpl<_$CharacterImpl>(this, _$identity);
+  _$$CharacterImplCopyWith<_$CharacterImpl> get copyWith =>
+      __$$CharacterImplCopyWithImpl<_$CharacterImpl>(this, _$identity);
 }
 
 abstract class _Character implements Character {
-  factory _Character({final List<Result>? results, final int? page}) = _$CharacterImpl;
+  factory _Character({final List<Result>? results, final int? page}) =
+      _$CharacterImpl;
 
   @override
   List<Result>? get results;
@@ -146,7 +160,8 @@ abstract class _Character implements Character {
 
   @override
   @JsonKey(ignore: true)
-  _$$CharacterImplCopyWith<_$CharacterImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$CharacterImplCopyWith<_$CharacterImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Result _$ResultFromJson(Map<String, dynamic> json) {
@@ -171,6 +186,8 @@ mixin _$Result {
 
   bool? get isFavorite => throw _privateConstructorUsedError;
 
+  String? get createdAt => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -179,14 +196,25 @@ mixin _$Result {
 
 /// @nodoc
 abstract class $ResultCopyWith<$Res> {
-  factory $ResultCopyWith(Result value, $Res Function(Result) then) = _$ResultCopyWithImpl<$Res, Result>;
+  factory $ResultCopyWith(Result value, $Res Function(Result) then) =
+      _$ResultCopyWithImpl<$Res, Result>;
 
   @useResult
-  $Res call({String? name, String? img, int? id, String? status, String? species, String? locationName, String? originName, bool? isFavorite});
+  $Res call(
+      {String? name,
+      String? img,
+      int? id,
+      String? status,
+      String? species,
+      String? locationName,
+      String? originName,
+      bool? isFavorite,
+      String? createdAt});
 }
 
 /// @nodoc
-class _$ResultCopyWithImpl<$Res, $Val extends Result> implements $ResultCopyWith<$Res> {
+class _$ResultCopyWithImpl<$Res, $Val extends Result>
+    implements $ResultCopyWith<$Res> {
   _$ResultCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -206,6 +234,7 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result> implements $ResultCopyWith
     Object? locationName = freezed,
     Object? originName = freezed,
     Object? isFavorite = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -240,22 +269,41 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result> implements $ResultCopyWith
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ResultImplCopyWith<$Res> implements $ResultCopyWith<$Res> {
-  factory _$$ResultImplCopyWith(_$ResultImpl value, $Res Function(_$ResultImpl) then) = __$$ResultImplCopyWithImpl<$Res>;
+  factory _$$ResultImplCopyWith(
+          _$ResultImpl value, $Res Function(_$ResultImpl) then) =
+      __$$ResultImplCopyWithImpl<$Res>;
 
   @override
   @useResult
-  $Res call({String? name, String? img, int? id, String? status, String? species, String? locationName, String? originName, bool? isFavorite});
+  $Res call(
+      {String? name,
+      String? img,
+      int? id,
+      String? status,
+      String? species,
+      String? locationName,
+      String? originName,
+      bool? isFavorite,
+      String? createdAt});
 }
 
 /// @nodoc
-class __$$ResultImplCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res, _$ResultImpl> implements _$$ResultImplCopyWith<$Res> {
-  __$$ResultImplCopyWithImpl(_$ResultImpl _value, $Res Function(_$ResultImpl) _then) : super(_value, _then);
+class __$$ResultImplCopyWithImpl<$Res>
+    extends _$ResultCopyWithImpl<$Res, _$ResultImpl>
+    implements _$$ResultImplCopyWith<$Res> {
+  __$$ResultImplCopyWithImpl(
+      _$ResultImpl _value, $Res Function(_$ResultImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -268,6 +316,7 @@ class __$$ResultImplCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res, _$Resu
     Object? locationName = freezed,
     Object? originName = freezed,
     Object? isFavorite = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_$ResultImpl(
       name: freezed == name
@@ -302,6 +351,10 @@ class __$$ResultImplCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res, _$Resu
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -309,9 +362,19 @@ class __$$ResultImplCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res, _$Resu
 /// @nodoc
 @JsonSerializable()
 class _$ResultImpl implements _Result {
-  _$ResultImpl({this.name, this.img, this.id, this.status, this.species, this.locationName, this.originName, this.isFavorite});
+  _$ResultImpl(
+      {this.name,
+      this.img,
+      this.id,
+      this.status,
+      this.species,
+      this.locationName,
+      this.originName,
+      this.isFavorite,
+      this.createdAt});
 
-  factory _$ResultImpl.fromJson(Map<String, dynamic> json) => _$$ResultImplFromJson(json);
+  factory _$ResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResultImplFromJson(json);
 
   @override
   final String? name;
@@ -329,10 +392,12 @@ class _$ResultImpl implements _Result {
   final String? originName;
   @override
   final bool? isFavorite;
+  @override
+  final String? createdAt;
 
   @override
   String toString() {
-    return 'Result(name: $name, img: $img, id: $id, status: $status, species: $species, locationName: $locationName, originName: $originName, isFavorite: $isFavorite)';
+    return 'Result(name: $name, img: $img, id: $id, status: $status, species: $species, locationName: $locationName, originName: $originName, isFavorite: $isFavorite, createdAt: $createdAt)';
   }
 
   @override
@@ -345,19 +410,26 @@ class _$ResultImpl implements _Result {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.species, species) || other.species == species) &&
-            (identical(other.locationName, locationName) || other.locationName == locationName) &&
-            (identical(other.originName, originName) || other.originName == originName) &&
-            (identical(other.isFavorite, isFavorite) || other.isFavorite == isFavorite));
+            (identical(other.locationName, locationName) ||
+                other.locationName == locationName) &&
+            (identical(other.originName, originName) ||
+                other.originName == originName) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, img, id, status, species, locationName, originName, isFavorite);
+  int get hashCode => Object.hash(runtimeType, name, img, id, status, species,
+      locationName, originName, isFavorite, createdAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ResultImplCopyWith<_$ResultImpl> get copyWith => __$$ResultImplCopyWithImpl<_$ResultImpl>(this, _$identity);
+  _$$ResultImplCopyWith<_$ResultImpl> get copyWith =>
+      __$$ResultImplCopyWithImpl<_$ResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -376,7 +448,8 @@ abstract class _Result implements Result {
       final String? species,
       final String? locationName,
       final String? originName,
-      final bool? isFavorite}) = _$ResultImpl;
+      final bool? isFavorite,
+      final String? createdAt}) = _$ResultImpl;
 
   factory _Result.fromJson(Map<String, dynamic> json) = _$ResultImpl.fromJson;
 
@@ -405,6 +478,10 @@ abstract class _Result implements Result {
   bool? get isFavorite;
 
   @override
+  String? get createdAt;
+
+  @override
   @JsonKey(ignore: true)
-  _$$ResultImplCopyWith<_$ResultImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$ResultImplCopyWith<_$ResultImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

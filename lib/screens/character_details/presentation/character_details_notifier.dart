@@ -18,12 +18,14 @@ class CharacterDetailsNotifier extends _$CharacterDetailsNotifier {
   void getCharacterDetails(int? id) async {
     try {
       state = state.copyWith(characterDetails: AsyncLoading());
-      final characterDetails = await _characterDetailsRepository.getCharactersDetails(id);
+      final characterDetails =
+          await _characterDetailsRepository.getCharactersDetails(id);
       state = state.copyWith(
         characterDetails: AsyncData(characterDetails),
       );
     } catch (e) {
-      state = state.copyWith(characterDetails: AsyncError(e, StackTrace.current));
+      state =
+          state.copyWith(characterDetails: AsyncError(e, StackTrace.current));
     }
   }
 }

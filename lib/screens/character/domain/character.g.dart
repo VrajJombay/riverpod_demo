@@ -15,9 +15,11 @@ _$ResultImpl _$$ResultImplFromJson(Map<String, dynamic> json) => _$ResultImpl(
       locationName: json['locationName'] as String?,
       originName: json['originName'] as String?,
       isFavorite: json['isFavorite'] as bool?,
+      createdAt: json['createdAt'] as String?,
     );
 
-Map<String, dynamic> _$$ResultImplToJson(_$ResultImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$ResultImplToJson(_$ResultImpl instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'img': instance.img,
       'id': instance.id,
@@ -26,4 +28,5 @@ Map<String, dynamic> _$$ResultImplToJson(_$ResultImpl instance) => <String, dyna
       'locationName': instance.locationName,
       'originName': instance.originName,
       'isFavorite': instance.isFavorite,
+      'createdAt': instance.createdAt,
     };

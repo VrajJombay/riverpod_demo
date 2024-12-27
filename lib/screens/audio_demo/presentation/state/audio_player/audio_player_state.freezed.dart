@@ -21,19 +21,23 @@ mixin _$AudioPlayerState {
   String? get filePath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AudioPlayerStateCopyWith<AudioPlayerState> get copyWith => throw _privateConstructorUsedError;
+  $AudioPlayerStateCopyWith<AudioPlayerState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AudioPlayerStateCopyWith<$Res> {
-  factory $AudioPlayerStateCopyWith(AudioPlayerState value, $Res Function(AudioPlayerState) then) = _$AudioPlayerStateCopyWithImpl<$Res, AudioPlayerState>;
+  factory $AudioPlayerStateCopyWith(
+          AudioPlayerState value, $Res Function(AudioPlayerState) then) =
+      _$AudioPlayerStateCopyWithImpl<$Res, AudioPlayerState>;
 
   @useResult
   $Res call({bool canRecordOrPlay, String? filePath});
 }
 
 /// @nodoc
-class _$AudioPlayerStateCopyWithImpl<$Res, $Val extends AudioPlayerState> implements $AudioPlayerStateCopyWith<$Res> {
+class _$AudioPlayerStateCopyWithImpl<$Res, $Val extends AudioPlayerState>
+    implements $AudioPlayerStateCopyWith<$Res> {
   _$AudioPlayerStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -62,8 +66,10 @@ class _$AudioPlayerStateCopyWithImpl<$Res, $Val extends AudioPlayerState> implem
 }
 
 /// @nodoc
-abstract class _$$AudioPlayerStateImplCopyWith<$Res> implements $AudioPlayerStateCopyWith<$Res> {
-  factory _$$AudioPlayerStateImplCopyWith(_$AudioPlayerStateImpl value, $Res Function(_$AudioPlayerStateImpl) then) =
+abstract class _$$AudioPlayerStateImplCopyWith<$Res>
+    implements $AudioPlayerStateCopyWith<$Res> {
+  factory _$$AudioPlayerStateImplCopyWith(_$AudioPlayerStateImpl value,
+          $Res Function(_$AudioPlayerStateImpl) then) =
       __$$AudioPlayerStateImplCopyWithImpl<$Res>;
 
   @override
@@ -72,9 +78,12 @@ abstract class _$$AudioPlayerStateImplCopyWith<$Res> implements $AudioPlayerStat
 }
 
 /// @nodoc
-class __$$AudioPlayerStateImplCopyWithImpl<$Res> extends _$AudioPlayerStateCopyWithImpl<$Res, _$AudioPlayerStateImpl>
+class __$$AudioPlayerStateImplCopyWithImpl<$Res>
+    extends _$AudioPlayerStateCopyWithImpl<$Res, _$AudioPlayerStateImpl>
     implements _$$AudioPlayerStateImplCopyWith<$Res> {
-  __$$AudioPlayerStateImplCopyWithImpl(_$AudioPlayerStateImpl _value, $Res Function(_$AudioPlayerStateImpl) _then) : super(_value, _then);
+  __$$AudioPlayerStateImplCopyWithImpl(_$AudioPlayerStateImpl _value,
+      $Res Function(_$AudioPlayerStateImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -117,8 +126,10 @@ class _$AudioPlayerStateImpl implements _AudioPlayerState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AudioPlayerStateImpl &&
-            (identical(other.canRecordOrPlay, canRecordOrPlay) || other.canRecordOrPlay == canRecordOrPlay) &&
-            (identical(other.filePath, filePath) || other.filePath == filePath));
+            (identical(other.canRecordOrPlay, canRecordOrPlay) ||
+                other.canRecordOrPlay == canRecordOrPlay) &&
+            (identical(other.filePath, filePath) ||
+                other.filePath == filePath));
   }
 
   @override
@@ -127,11 +138,15 @@ class _$AudioPlayerStateImpl implements _AudioPlayerState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AudioPlayerStateImplCopyWith<_$AudioPlayerStateImpl> get copyWith => __$$AudioPlayerStateImplCopyWithImpl<_$AudioPlayerStateImpl>(this, _$identity);
+  _$$AudioPlayerStateImplCopyWith<_$AudioPlayerStateImpl> get copyWith =>
+      __$$AudioPlayerStateImplCopyWithImpl<_$AudioPlayerStateImpl>(
+          this, _$identity);
 }
 
 abstract class _AudioPlayerState implements AudioPlayerState {
-  factory _AudioPlayerState({final bool canRecordOrPlay, final String? filePath}) = _$AudioPlayerStateImpl;
+  factory _AudioPlayerState(
+      {final bool canRecordOrPlay,
+      final String? filePath}) = _$AudioPlayerStateImpl;
 
   @override
   bool get canRecordOrPlay;
@@ -141,5 +156,6 @@ abstract class _AudioPlayerState implements AudioPlayerState {
 
   @override
   @JsonKey(ignore: true)
-  _$$AudioPlayerStateImplCopyWith<_$AudioPlayerStateImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$AudioPlayerStateImplCopyWith<_$AudioPlayerStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

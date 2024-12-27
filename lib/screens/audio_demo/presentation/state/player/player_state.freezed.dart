@@ -27,20 +27,28 @@ mixin _$PlayerDefaultState {
   String get playerTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PlayerDefaultStateCopyWith<PlayerDefaultState> get copyWith => throw _privateConstructorUsedError;
+  $PlayerDefaultStateCopyWith<PlayerDefaultState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PlayerDefaultStateCopyWith<$Res> {
-  factory $PlayerDefaultStateCopyWith(PlayerDefaultState value, $Res Function(PlayerDefaultState) then) =
+  factory $PlayerDefaultStateCopyWith(
+          PlayerDefaultState value, $Res Function(PlayerDefaultState) then) =
       _$PlayerDefaultStateCopyWithImpl<$Res, PlayerDefaultState>;
 
   @useResult
-  $Res call({AsyncValue<bool> playerData, double playerSliderDuration, double maxDuration, String filePath, String playerTime});
+  $Res call(
+      {AsyncValue<bool> playerData,
+      double playerSliderDuration,
+      double maxDuration,
+      String filePath,
+      String playerTime});
 }
 
 /// @nodoc
-class _$PlayerDefaultStateCopyWithImpl<$Res, $Val extends PlayerDefaultState> implements $PlayerDefaultStateCopyWith<$Res> {
+class _$PlayerDefaultStateCopyWithImpl<$Res, $Val extends PlayerDefaultState>
+    implements $PlayerDefaultStateCopyWith<$Res> {
   _$PlayerDefaultStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -84,19 +92,29 @@ class _$PlayerDefaultStateCopyWithImpl<$Res, $Val extends PlayerDefaultState> im
 }
 
 /// @nodoc
-abstract class _$$PlayerDefaultStateImplCopyWith<$Res> implements $PlayerDefaultStateCopyWith<$Res> {
-  factory _$$PlayerDefaultStateImplCopyWith(_$PlayerDefaultStateImpl value, $Res Function(_$PlayerDefaultStateImpl) then) =
+abstract class _$$PlayerDefaultStateImplCopyWith<$Res>
+    implements $PlayerDefaultStateCopyWith<$Res> {
+  factory _$$PlayerDefaultStateImplCopyWith(_$PlayerDefaultStateImpl value,
+          $Res Function(_$PlayerDefaultStateImpl) then) =
       __$$PlayerDefaultStateImplCopyWithImpl<$Res>;
 
   @override
   @useResult
-  $Res call({AsyncValue<bool> playerData, double playerSliderDuration, double maxDuration, String filePath, String playerTime});
+  $Res call(
+      {AsyncValue<bool> playerData,
+      double playerSliderDuration,
+      double maxDuration,
+      String filePath,
+      String playerTime});
 }
 
 /// @nodoc
-class __$$PlayerDefaultStateImplCopyWithImpl<$Res> extends _$PlayerDefaultStateCopyWithImpl<$Res, _$PlayerDefaultStateImpl>
+class __$$PlayerDefaultStateImplCopyWithImpl<$Res>
+    extends _$PlayerDefaultStateCopyWithImpl<$Res, _$PlayerDefaultStateImpl>
     implements _$$PlayerDefaultStateImplCopyWith<$Res> {
-  __$$PlayerDefaultStateImplCopyWithImpl(_$PlayerDefaultStateImpl _value, $Res Function(_$PlayerDefaultStateImpl) _then) : super(_value, _then);
+  __$$PlayerDefaultStateImplCopyWithImpl(_$PlayerDefaultStateImpl _value,
+      $Res Function(_$PlayerDefaultStateImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -136,7 +154,11 @@ class __$$PlayerDefaultStateImplCopyWithImpl<$Res> extends _$PlayerDefaultStateC
 
 class _$PlayerDefaultStateImpl implements _PlayerDefaultState {
   _$PlayerDefaultStateImpl(
-      {this.playerData = const AsyncLoading(), this.playerSliderDuration = 0.0, this.maxDuration = 0.0, required this.filePath, this.playerTime = '00:00'});
+      {this.playerData = const AsyncLoading(),
+      this.playerSliderDuration = 0.0,
+      this.maxDuration = 0.0,
+      required this.filePath,
+      this.playerTime = '00:00'});
 
   @override
   @JsonKey()
@@ -163,21 +185,28 @@ class _$PlayerDefaultStateImpl implements _PlayerDefaultState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlayerDefaultStateImpl &&
-            (identical(other.playerData, playerData) || other.playerData == playerData) &&
-            (identical(other.playerSliderDuration, playerSliderDuration) || other.playerSliderDuration == playerSliderDuration) &&
-            (identical(other.maxDuration, maxDuration) || other.maxDuration == maxDuration) &&
-            (identical(other.filePath, filePath) || other.filePath == filePath) &&
-            (identical(other.playerTime, playerTime) || other.playerTime == playerTime));
+            (identical(other.playerData, playerData) ||
+                other.playerData == playerData) &&
+            (identical(other.playerSliderDuration, playerSliderDuration) ||
+                other.playerSliderDuration == playerSliderDuration) &&
+            (identical(other.maxDuration, maxDuration) ||
+                other.maxDuration == maxDuration) &&
+            (identical(other.filePath, filePath) ||
+                other.filePath == filePath) &&
+            (identical(other.playerTime, playerTime) ||
+                other.playerTime == playerTime));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, playerData, playerSliderDuration, maxDuration, filePath, playerTime);
+  int get hashCode => Object.hash(runtimeType, playerData, playerSliderDuration,
+      maxDuration, filePath, playerTime);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$PlayerDefaultStateImplCopyWith<_$PlayerDefaultStateImpl> get copyWith =>
-      __$$PlayerDefaultStateImplCopyWithImpl<_$PlayerDefaultStateImpl>(this, _$identity);
+      __$$PlayerDefaultStateImplCopyWithImpl<_$PlayerDefaultStateImpl>(
+          this, _$identity);
 }
 
 abstract class _PlayerDefaultState implements PlayerDefaultState {
@@ -205,5 +234,6 @@ abstract class _PlayerDefaultState implements PlayerDefaultState {
 
   @override
   @JsonKey(ignore: true)
-  _$$PlayerDefaultStateImplCopyWith<_$PlayerDefaultStateImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$PlayerDefaultStateImplCopyWith<_$PlayerDefaultStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

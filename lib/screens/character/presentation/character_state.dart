@@ -9,7 +9,8 @@ part 'character_state.freezed.dart';
 class CharacterState with _$CharacterState {
   factory CharacterState({
     @Default(AsyncData(null)) AsyncValue<List<Result>?> getCharacterData,
-    @Default(AsyncData(null)) AsyncValue<List<Result>?> getCharacterDataForSearch,
+    @Default(AsyncData(null))
+    AsyncValue<List<Result>?> getCharacterDataForSearch,
     @Default(true) bool isListView,
     @Default(1) int currentPage,
     @Default(0) int totalPage,

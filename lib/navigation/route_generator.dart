@@ -6,16 +6,16 @@ import 'package:riverpod_demo/utils/arguments.dart';
 
 import '../screens/audio_demo/presentation/audio_player_screen.dart';
 
-
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.initialRoute:
         return MaterialPageRoute(
-            builder: (context) => AudioPlayerScreen(
-                /*isNetworkUrl: true,
-                  networkFileUrl: 'https://flutter-sound.canardoux.xyz/extract/01.aac',*/
-                ));
+          builder: (context) => /*LeaderBoardScreen()*/ AudioPlayerScreen(
+              /*isNetworkUrl: true,
+            networkFileUrl: 'https://flutter-sound.canardoux.xyz/extract/01.aac',*/
+              ),
+        );
       case AppRoutes.characterDetailsRoute:
         return MaterialPageRoute(
             builder: (context) => CharacterDetailsScreen(

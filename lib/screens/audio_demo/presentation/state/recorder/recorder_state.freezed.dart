@@ -18,23 +18,28 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RecorderState {
   AsyncValue<bool> get recorderInitialize => throw _privateConstructorUsedError;
 
-  AsyncValue<bool> get recordingInProgress => throw _privateConstructorUsedError;
+  AsyncValue<bool> get recordingInProgress =>
+      throw _privateConstructorUsedError;
 
   double get recordingSliderDuration => throw _privateConstructorUsedError;
 
   String? get recordingPath => throw _privateConstructorUsedError;
 
-  AsyncValue<PermissionStatus> get permissionStatus => throw _privateConstructorUsedError;
+  AsyncValue<PermissionStatus> get permissionStatus =>
+      throw _privateConstructorUsedError;
 
   String get recordingTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RecorderStateCopyWith<RecorderState> get copyWith => throw _privateConstructorUsedError;
+  $RecorderStateCopyWith<RecorderState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RecorderStateCopyWith<$Res> {
-  factory $RecorderStateCopyWith(RecorderState value, $Res Function(RecorderState) then) = _$RecorderStateCopyWithImpl<$Res, RecorderState>;
+  factory $RecorderStateCopyWith(
+          RecorderState value, $Res Function(RecorderState) then) =
+      _$RecorderStateCopyWithImpl<$Res, RecorderState>;
 
   @useResult
   $Res call(
@@ -47,7 +52,8 @@ abstract class $RecorderStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RecorderStateCopyWithImpl<$Res, $Val extends RecorderState> implements $RecorderStateCopyWith<$Res> {
+class _$RecorderStateCopyWithImpl<$Res, $Val extends RecorderState>
+    implements $RecorderStateCopyWith<$Res> {
   _$RecorderStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -96,8 +102,11 @@ class _$RecorderStateCopyWithImpl<$Res, $Val extends RecorderState> implements $
 }
 
 /// @nodoc
-abstract class _$$RecorderStateImplCopyWith<$Res> implements $RecorderStateCopyWith<$Res> {
-  factory _$$RecorderStateImplCopyWith(_$RecorderStateImpl value, $Res Function(_$RecorderStateImpl) then) = __$$RecorderStateImplCopyWithImpl<$Res>;
+abstract class _$$RecorderStateImplCopyWith<$Res>
+    implements $RecorderStateCopyWith<$Res> {
+  factory _$$RecorderStateImplCopyWith(
+          _$RecorderStateImpl value, $Res Function(_$RecorderStateImpl) then) =
+      __$$RecorderStateImplCopyWithImpl<$Res>;
 
   @override
   @useResult
@@ -111,8 +120,12 @@ abstract class _$$RecorderStateImplCopyWith<$Res> implements $RecorderStateCopyW
 }
 
 /// @nodoc
-class __$$RecorderStateImplCopyWithImpl<$Res> extends _$RecorderStateCopyWithImpl<$Res, _$RecorderStateImpl> implements _$$RecorderStateImplCopyWith<$Res> {
-  __$$RecorderStateImplCopyWithImpl(_$RecorderStateImpl _value, $Res Function(_$RecorderStateImpl) _then) : super(_value, _then);
+class __$$RecorderStateImplCopyWithImpl<$Res>
+    extends _$RecorderStateCopyWithImpl<$Res, _$RecorderStateImpl>
+    implements _$$RecorderStateImplCopyWith<$Res> {
+  __$$RecorderStateImplCopyWithImpl(
+      _$RecorderStateImpl _value, $Res Function(_$RecorderStateImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -193,22 +206,36 @@ class _$RecorderStateImpl implements _RecorderState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RecorderStateImpl &&
-            (identical(other.recorderInitialize, recorderInitialize) || other.recorderInitialize == recorderInitialize) &&
-            (identical(other.recordingInProgress, recordingInProgress) || other.recordingInProgress == recordingInProgress) &&
-            (identical(other.recordingSliderDuration, recordingSliderDuration) || other.recordingSliderDuration == recordingSliderDuration) &&
-            (identical(other.recordingPath, recordingPath) || other.recordingPath == recordingPath) &&
-            (identical(other.permissionStatus, permissionStatus) || other.permissionStatus == permissionStatus) &&
-            (identical(other.recordingTime, recordingTime) || other.recordingTime == recordingTime));
+            (identical(other.recorderInitialize, recorderInitialize) ||
+                other.recorderInitialize == recorderInitialize) &&
+            (identical(other.recordingInProgress, recordingInProgress) ||
+                other.recordingInProgress == recordingInProgress) &&
+            (identical(
+                    other.recordingSliderDuration, recordingSliderDuration) ||
+                other.recordingSliderDuration == recordingSliderDuration) &&
+            (identical(other.recordingPath, recordingPath) ||
+                other.recordingPath == recordingPath) &&
+            (identical(other.permissionStatus, permissionStatus) ||
+                other.permissionStatus == permissionStatus) &&
+            (identical(other.recordingTime, recordingTime) ||
+                other.recordingTime == recordingTime));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, recorderInitialize, recordingInProgress, recordingSliderDuration, recordingPath, permissionStatus, recordingTime);
+  int get hashCode => Object.hash(
+      runtimeType,
+      recorderInitialize,
+      recordingInProgress,
+      recordingSliderDuration,
+      recordingPath,
+      permissionStatus,
+      recordingTime);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RecorderStateImplCopyWith<_$RecorderStateImpl> get copyWith => __$$RecorderStateImplCopyWithImpl<_$RecorderStateImpl>(this, _$identity);
+  _$$RecorderStateImplCopyWith<_$RecorderStateImpl> get copyWith =>
+      __$$RecorderStateImplCopyWithImpl<_$RecorderStateImpl>(this, _$identity);
 }
 
 abstract class _RecorderState implements RecorderState {
@@ -240,5 +267,6 @@ abstract class _RecorderState implements RecorderState {
 
   @override
   @JsonKey(ignore: true)
-  _$$RecorderStateImplCopyWith<_$RecorderStateImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$RecorderStateImplCopyWith<_$RecorderStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

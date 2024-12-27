@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:riverpod_demo/extensions/object_extension.dart';
 import 'package:riverpod_demo/screens/favorite/presentation/favorite_notifier.dart';
 
-import '../../character/domain/character.dart';
+import '../domain/favorite_character.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
@@ -21,7 +21,7 @@ class FavoriteScreen extends StatelessWidget {
           final favoriteCharacterList = ref.watch(favoriteNotifierProvider);
           return favoriteCharacterList.when(
             data: (favoriteList) {
-              return _lisView(favoriteList: favoriteList.value);
+              return _lisView(favoriteList: favoriteList.value, ref: ref);
             },
             error: (error, stacktrace) {
               print('error0==>$error');
@@ -38,12 +38,13 @@ class FavoriteScreen extends StatelessWidget {
     );
   }
 
-  Widget _lisView({List<Result>? favoriteList}) {
+  Widget _lisView(
+      {List<FavoriteResult>? favoriteList, required WidgetRef ref}) {
     return ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         itemCount: (favoriteList?.length ?? 0),
         itemBuilder: (context, index) {
-          Result? result;
+          FavoriteResult? result;
           if (index != favoriteList?.length) {
             result = favoriteList?[index];
           }
@@ -52,12 +53,16 @@ class FavoriteScreen extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.symmetric(vertical: 5),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.black12),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.black12),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          bottomLeft: Radius.circular(8)),
                       child: Image.network(
                         result?.img ?? '',
                         fit: BoxFit.scaleDown,
@@ -65,7 +70,11 @@ class FavoriteScreen extends StatelessWidget {
                           if (loadingProgress == null) {
                             return child;
                           } else {
-                            return SizedBox(height: 125, width: 125, child: Center(child: CircularProgressIndicator()));
+                            return SizedBox(
+                                height: 125,
+                                width: 125,
+                                child:
+                                    Center(child: CircularProgressIndicator()));
                           }
                         },
 
@@ -85,16 +94,46 @@ class FavoriteScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            result?.name ?? '',
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                            overflow: TextOverflow.ellipsis,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  result?.name ?? '',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: InkWell(
+                                  onTap: () async {
+                                    await ref
+                                        .read(favoriteNotifierProvider.notifier)
+                                        .deleteFavorite(result?.id);
+                                  },
+                                  child: Text(
+                                    'Remove',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.red),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          Text('${result?.status ?? ''} - ${result?.species ?? ' '}'),
+                          Text(
+                              '${result?.status ?? ''} - ${result?.species ?? ' '}'),
                           Text('Last known location:'),
-                          Text('${result?.locationName ?? ''}', overflow: TextOverflow.ellipsis),
+                          Text('${result?.locationName ?? ''}',
+                              overflow: TextOverflow.ellipsis),
                           Text('First seen in:'),
-                          Text('${result?.originName ?? ''}', overflow: TextOverflow.ellipsis),
+                          Text('${result?.originName ?? ''}',
+                              overflow: TextOverflow.ellipsis),
                         ],
                       ),
                     ),

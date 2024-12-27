@@ -16,15 +16,18 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CharacterDetailsState {
-  AsyncValue<CharacterDetails?> get characterDetails => throw _privateConstructorUsedError;
+  AsyncValue<CharacterDetails?> get characterDetails =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CharacterDetailsStateCopyWith<CharacterDetailsState> get copyWith => throw _privateConstructorUsedError;
+  $CharacterDetailsStateCopyWith<CharacterDetailsState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CharacterDetailsStateCopyWith<$Res> {
-  factory $CharacterDetailsStateCopyWith(CharacterDetailsState value, $Res Function(CharacterDetailsState) then) =
+  factory $CharacterDetailsStateCopyWith(CharacterDetailsState value,
+          $Res Function(CharacterDetailsState) then) =
       _$CharacterDetailsStateCopyWithImpl<$Res, CharacterDetailsState>;
 
   @useResult
@@ -32,7 +35,9 @@ abstract class $CharacterDetailsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CharacterDetailsStateCopyWithImpl<$Res, $Val extends CharacterDetailsState> implements $CharacterDetailsStateCopyWith<$Res> {
+class _$CharacterDetailsStateCopyWithImpl<$Res,
+        $Val extends CharacterDetailsState>
+    implements $CharacterDetailsStateCopyWith<$Res> {
   _$CharacterDetailsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -56,8 +61,11 @@ class _$CharacterDetailsStateCopyWithImpl<$Res, $Val extends CharacterDetailsSta
 }
 
 /// @nodoc
-abstract class _$$CharacterDetailsStateImplCopyWith<$Res> implements $CharacterDetailsStateCopyWith<$Res> {
-  factory _$$CharacterDetailsStateImplCopyWith(_$CharacterDetailsStateImpl value, $Res Function(_$CharacterDetailsStateImpl) then) =
+abstract class _$$CharacterDetailsStateImplCopyWith<$Res>
+    implements $CharacterDetailsStateCopyWith<$Res> {
+  factory _$$CharacterDetailsStateImplCopyWith(
+          _$CharacterDetailsStateImpl value,
+          $Res Function(_$CharacterDetailsStateImpl) then) =
       __$$CharacterDetailsStateImplCopyWithImpl<$Res>;
 
   @override
@@ -66,9 +74,13 @@ abstract class _$$CharacterDetailsStateImplCopyWith<$Res> implements $CharacterD
 }
 
 /// @nodoc
-class __$$CharacterDetailsStateImplCopyWithImpl<$Res> extends _$CharacterDetailsStateCopyWithImpl<$Res, _$CharacterDetailsStateImpl>
+class __$$CharacterDetailsStateImplCopyWithImpl<$Res>
+    extends _$CharacterDetailsStateCopyWithImpl<$Res,
+        _$CharacterDetailsStateImpl>
     implements _$$CharacterDetailsStateImplCopyWith<$Res> {
-  __$$CharacterDetailsStateImplCopyWithImpl(_$CharacterDetailsStateImpl _value, $Res Function(_$CharacterDetailsStateImpl) _then) : super(_value, _then);
+  __$$CharacterDetailsStateImplCopyWithImpl(_$CharacterDetailsStateImpl _value,
+      $Res Function(_$CharacterDetailsStateImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -103,7 +115,8 @@ class _$CharacterDetailsStateImpl implements _CharacterDetailsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CharacterDetailsStateImpl &&
-            (identical(other.characterDetails, characterDetails) || other.characterDetails == characterDetails));
+            (identical(other.characterDetails, characterDetails) ||
+                other.characterDetails == characterDetails));
   }
 
   @override
@@ -112,17 +125,21 @@ class _$CharacterDetailsStateImpl implements _CharacterDetailsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CharacterDetailsStateImplCopyWith<_$CharacterDetailsStateImpl> get copyWith =>
-      __$$CharacterDetailsStateImplCopyWithImpl<_$CharacterDetailsStateImpl>(this, _$identity);
+  _$$CharacterDetailsStateImplCopyWith<_$CharacterDetailsStateImpl>
+      get copyWith => __$$CharacterDetailsStateImplCopyWithImpl<
+          _$CharacterDetailsStateImpl>(this, _$identity);
 }
 
 abstract class _CharacterDetailsState implements CharacterDetailsState {
-  factory _CharacterDetailsState({final AsyncValue<CharacterDetails?> characterDetails}) = _$CharacterDetailsStateImpl;
+  factory _CharacterDetailsState(
+          {final AsyncValue<CharacterDetails?> characterDetails}) =
+      _$CharacterDetailsStateImpl;
 
   @override
   AsyncValue<CharacterDetails?> get characterDetails;
 
   @override
   @JsonKey(ignore: true)
-  _$$CharacterDetailsStateImplCopyWith<_$CharacterDetailsStateImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$CharacterDetailsStateImplCopyWith<_$CharacterDetailsStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

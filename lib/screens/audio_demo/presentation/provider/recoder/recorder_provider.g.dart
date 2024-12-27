@@ -6,14 +6,16 @@ part of 'recorder_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recorderHash() => r'a0fa5fd5c2d8004cf1c381ff7670882add2b1ea1';
+String _$recorderHash() => r'd6170e3957cd374bcd43b3ee943edbde22276c39';
 
 /// See also [Recorder].
 @ProviderFor(Recorder)
-final recorderProvider = AutoDisposeNotifierProvider<Recorder, RecorderState>.internal(
+final recorderProvider =
+    AutoDisposeNotifierProvider<Recorder, RecorderState>.internal(
   Recorder.new,
   name: r'recorderProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$recorderHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$recorderHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

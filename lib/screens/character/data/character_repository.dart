@@ -21,7 +21,8 @@ abstract class CharacterRepository {
 class CharacterRepositoryImpl extends CharacterRepository {
   final CharacterApiServices _characterApiServices;
 
-  CharacterRepositoryImpl({required CharacterApiServices characterApiServices}) : _characterApiServices = characterApiServices;
+  CharacterRepositoryImpl({required CharacterApiServices characterApiServices})
+      : _characterApiServices = characterApiServices;
 
   @override
   Future<Character?> getCharacters(int page) async {

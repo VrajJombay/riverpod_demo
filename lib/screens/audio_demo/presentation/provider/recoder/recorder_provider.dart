@@ -46,16 +46,21 @@ class Recorder extends _$Recorder {
       await session?.configure(
         AudioSessionConfiguration(
           avAudioSessionCategory: AVAudioSessionCategory.playAndRecord,
-          avAudioSessionCategoryOptions: AVAudioSessionCategoryOptions.allowBluetooth | AVAudioSessionCategoryOptions.defaultToSpeaker,
+          avAudioSessionCategoryOptions:
+              AVAudioSessionCategoryOptions.allowBluetooth |
+                  AVAudioSessionCategoryOptions.defaultToSpeaker,
           avAudioSessionMode: AVAudioSessionMode.spokenAudio,
-          avAudioSessionRouteSharingPolicy: AVAudioSessionRouteSharingPolicy.defaultPolicy,
-          avAudioSessionSetActiveOptions: AVAudioSessionSetActiveOptions.notifyOthersOnDeactivation,
+          avAudioSessionRouteSharingPolicy:
+              AVAudioSessionRouteSharingPolicy.defaultPolicy,
+          avAudioSessionSetActiveOptions:
+              AVAudioSessionSetActiveOptions.notifyOthersOnDeactivation,
           androidAudioAttributes: const AndroidAudioAttributes(
             contentType: AndroidAudioContentType.speech,
             flags: AndroidAudioFlags.none,
             usage: AndroidAudioUsage.voiceCommunication,
           ),
-          androidAudioFocusGainType: AndroidAudioFocusGainType.gainTransientExclusive,
+          androidAudioFocusGainType:
+              AndroidAudioFocusGainType.gainTransientExclusive,
           androidWillPauseWhenDucked: true,
         ),
       );
@@ -78,7 +83,8 @@ class Recorder extends _$Recorder {
     try {
       var path = '';
       var tempDir = await getTemporaryDirectory();
-      path = '${tempDir.path}/${DateTime.now().day}_${DateTime.now().month}_${DateTime.now().year}_${DateTime.now().millisecond}${ext[_codec.index]}';
+      path =
+          '${tempDir.path}/${DateTime.now().day}_${DateTime.now().month}_${DateTime.now().year}_${DateTime.now().millisecond}${ext[_codec.index]}';
       await _recorder.startRecorder(
         toFile: path,
         codec: _codec,
@@ -88,10 +94,16 @@ class Recorder extends _$Recorder {
       print('fileUrl@@1==>$path');
       state = state.copyWith(recordingInProgress: AsyncData(true));
       _recorderSubscription = _recorder.onProgress?.listen((position) async {
-        if (position.duration.inMilliseconds.toDouble() <= 60000.0 && position.duration.inMilliseconds.toDouble() >= 0.0) {
-          var date = DateTime.fromMillisecondsSinceEpoch(position.duration.inMilliseconds, isUtc: true);
+        if (position.duration.inMilliseconds.toDouble() <= 60000.0 &&
+            position.duration.inMilliseconds.toDouble() >= 0.0) {
+          var date = DateTime.fromMillisecondsSinceEpoch(
+              position.duration.inMilliseconds,
+              isUtc: true);
           var txt = DateFormat('mm:ss').format(date);
-          state = state.copyWith(recordingSliderDuration: position.duration.inMilliseconds.toDouble(), recordingTime: txt);
+          state = state.copyWith(
+              recordingSliderDuration:
+                  position.duration.inMilliseconds.toDouble(),
+              recordingTime: txt);
         } else {
           await stopRecorder();
         }

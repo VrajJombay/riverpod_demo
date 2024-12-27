@@ -1,24 +1,32 @@
-import 'dart:convert';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:riverpod_demo/extensions/mappers.dart';
+import 'package:riverpod_demo/realm/model/character_entity.dart';
+import 'package:riverpod_demo/realm/realm_provider.dart';
 
-import '../../../preferences/preferences_key.dart';
-import '../../../preferences/preferences_provider.dart';
-import '../../../preferences/preferences_service.dart';
-import '../../character/domain/character.dart';
+import '../../../realm/dao/character_dao.dart';
+import '../domain/favorite_character.dart';
 
 part 'favorite_notifier.g.dart';
 
 @riverpod
 class FavoriteNotifier extends _$FavoriteNotifier {
-  late final PreferencesService _preferencesService;
+  late final CharacterDao _characterDao;
 
   @override
-  Future<AsyncValue<List<Result>?>> build() async {
-    _preferencesService = ref.read(preferencesProvider);
-    List<dynamic>? favoriteListFromStore = json.decode(await _preferencesService.getString(key: PreferencesKey.characterList) ?? '');
-    List<Result>? favoriteList = favoriteListFromStore?.map((e) => Result.fromJson(e)).toList();
+  Future<AsyncValue<List<FavoriteResult>?>> build() async {
+    _characterDao = ref.read(characterDaoProvider);
+    List<CharacterEntity>? favoriteCharacterList =
+        await _characterDao.getCharacter();
 
-    return AsyncData(favoriteList);
+    return AsyncData(
+        favoriteCharacterList?.map((e) => e.mapToFavoriteResult).toList());
+  }
+
+  Future<void> deleteFavorite(int? id) async {
+    print('init called -->${state.value?.value.runtimeType}');
+    print('delete called');
+    await _characterDao.deleteCharacter(id ?? 0);
+    state.value?.value?.removeWhere((e) => e.id == id);
+    state = AsyncData(state.value!);
   }
 }

@@ -10,10 +10,12 @@ String _$audioPlayerHash() => r'a6197409bd5cb2fd53fc30ab5b20c315484f6341';
 
 /// See also [AudioPlayer].
 @ProviderFor(AudioPlayer)
-final audioPlayerProvider = AutoDisposeNotifierProvider<AudioPlayer, AudioPlayerState>.internal(
+final audioPlayerProvider =
+    AutoDisposeNotifierProvider<AudioPlayer, AudioPlayerState>.internal(
   AudioPlayer.new,
   name: r'audioPlayerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$audioPlayerHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$audioPlayerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

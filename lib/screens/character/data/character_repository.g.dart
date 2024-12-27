@@ -6,14 +6,18 @@ part of 'character_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$characterRepositoryHash() => r'a9313af567bbb548228919d49d607ac87255185a';
+String _$characterRepositoryHash() =>
+    r'a9313af567bbb548228919d49d607ac87255185a';
 
 /// See also [characterRepository].
 @ProviderFor(characterRepository)
-final characterRepositoryProvider = AutoDisposeProvider<CharacterRepository>.internal(
+final characterRepositoryProvider =
+    AutoDisposeProvider<CharacterRepository>.internal(
   characterRepository,
   name: r'characterRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$characterRepositoryHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$characterRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

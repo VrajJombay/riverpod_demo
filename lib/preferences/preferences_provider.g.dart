@@ -13,7 +13,8 @@ String _$preferencesHash() => r'7ca0879c21539b3e5fc5274b388781ad6c8762fb';
 final preferencesProvider = AutoDisposeProvider<PreferencesService>.internal(
   preferences,
   name: r'preferencesProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$preferencesHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$preferencesHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

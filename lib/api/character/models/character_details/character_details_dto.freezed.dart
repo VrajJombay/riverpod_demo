@@ -59,12 +59,14 @@ mixin _$CharacterDetailsDto {
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CharacterDetailsDtoCopyWith<CharacterDetailsDto> get copyWith => throw _privateConstructorUsedError;
+  $CharacterDetailsDtoCopyWith<CharacterDetailsDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CharacterDetailsDtoCopyWith<$Res> {
-  factory $CharacterDetailsDtoCopyWith(CharacterDetailsDto value, $Res Function(CharacterDetailsDto) then) =
+  factory $CharacterDetailsDtoCopyWith(
+          CharacterDetailsDto value, $Res Function(CharacterDetailsDto) then) =
       _$CharacterDetailsDtoCopyWithImpl<$Res, CharacterDetailsDto>;
 
   @useResult
@@ -88,7 +90,8 @@ abstract class $CharacterDetailsDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CharacterDetailsDtoCopyWithImpl<$Res, $Val extends CharacterDetailsDto> implements $CharacterDetailsDtoCopyWith<$Res> {
+class _$CharacterDetailsDtoCopyWithImpl<$Res, $Val extends CharacterDetailsDto>
+    implements $CharacterDetailsDtoCopyWith<$Res> {
   _$CharacterDetailsDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -191,8 +194,10 @@ class _$CharacterDetailsDtoCopyWithImpl<$Res, $Val extends CharacterDetailsDto> 
 }
 
 /// @nodoc
-abstract class _$$CharacterDetailsDtoImplCopyWith<$Res> implements $CharacterDetailsDtoCopyWith<$Res> {
-  factory _$$CharacterDetailsDtoImplCopyWith(_$CharacterDetailsDtoImpl value, $Res Function(_$CharacterDetailsDtoImpl) then) =
+abstract class _$$CharacterDetailsDtoImplCopyWith<$Res>
+    implements $CharacterDetailsDtoCopyWith<$Res> {
+  factory _$$CharacterDetailsDtoImplCopyWith(_$CharacterDetailsDtoImpl value,
+          $Res Function(_$CharacterDetailsDtoImpl) then) =
       __$$CharacterDetailsDtoImplCopyWithImpl<$Res>;
 
   @override
@@ -219,9 +224,12 @@ abstract class _$$CharacterDetailsDtoImplCopyWith<$Res> implements $CharacterDet
 }
 
 /// @nodoc
-class __$$CharacterDetailsDtoImplCopyWithImpl<$Res> extends _$CharacterDetailsDtoCopyWithImpl<$Res, _$CharacterDetailsDtoImpl>
+class __$$CharacterDetailsDtoImplCopyWithImpl<$Res>
+    extends _$CharacterDetailsDtoCopyWithImpl<$Res, _$CharacterDetailsDtoImpl>
     implements _$$CharacterDetailsDtoImplCopyWith<$Res> {
-  __$$CharacterDetailsDtoImplCopyWithImpl(_$CharacterDetailsDtoImpl _value, $Res Function(_$CharacterDetailsDtoImpl) _then) : super(_value, _then);
+  __$$CharacterDetailsDtoImplCopyWithImpl(_$CharacterDetailsDtoImpl _value,
+      $Res Function(_$CharacterDetailsDtoImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -310,7 +318,8 @@ class _$CharacterDetailsDtoImpl implements _CharacterDetailsDto {
       @JsonKey(name: 'created') this.created})
       : _episode = episode;
 
-  factory _$CharacterDetailsDtoImpl.fromJson(Map<String, dynamic> json) => _$$CharacterDetailsDtoImplFromJson(json);
+  factory _$CharacterDetailsDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CharacterDetailsDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -375,7 +384,8 @@ class _$CharacterDetailsDtoImpl implements _CharacterDetailsDto {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.origin, origin) || other.origin == origin) &&
-            (identical(other.location, location) || other.location == location) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
             (identical(other.image, image) || other.image == image) &&
             const DeepCollectionEquality().equals(other._episode, _episode) &&
             (identical(other.url, url) || other.url == url) &&
@@ -384,14 +394,27 @@ class _$CharacterDetailsDtoImpl implements _CharacterDetailsDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, status, species, type, gender, origin, location, image, const DeepCollectionEquality().hash(_episode), url, created);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      status,
+      species,
+      type,
+      gender,
+      origin,
+      location,
+      image,
+      const DeepCollectionEquality().hash(_episode),
+      url,
+      created);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CharacterDetailsDtoImplCopyWith<_$CharacterDetailsDtoImpl> get copyWith =>
-      __$$CharacterDetailsDtoImplCopyWithImpl<_$CharacterDetailsDtoImpl>(this, _$identity);
+      __$$CharacterDetailsDtoImplCopyWithImpl<_$CharacterDetailsDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -403,20 +426,22 @@ class _$CharacterDetailsDtoImpl implements _CharacterDetailsDto {
 
 abstract class _CharacterDetailsDto implements CharacterDetailsDto {
   const factory _CharacterDetailsDto(
-      {@JsonKey(name: 'id') final int? id,
-      @JsonKey(name: 'name') final String? name,
-      @JsonKey(name: 'status') final String? status,
-      @JsonKey(name: 'species') final String? species,
-      @JsonKey(name: 'type') final String? type,
-      @JsonKey(name: 'gender') final String? gender,
-      @JsonKey(name: 'origin') final Origin? origin,
-      @JsonKey(name: 'location') final Location? location,
-      @JsonKey(name: 'image') final String? image,
-      @JsonKey(name: 'episode') final List<String>? episode,
-      @JsonKey(name: 'url') final String? url,
-      @JsonKey(name: 'created') final String? created}) = _$CharacterDetailsDtoImpl;
+          {@JsonKey(name: 'id') final int? id,
+          @JsonKey(name: 'name') final String? name,
+          @JsonKey(name: 'status') final String? status,
+          @JsonKey(name: 'species') final String? species,
+          @JsonKey(name: 'type') final String? type,
+          @JsonKey(name: 'gender') final String? gender,
+          @JsonKey(name: 'origin') final Origin? origin,
+          @JsonKey(name: 'location') final Location? location,
+          @JsonKey(name: 'image') final String? image,
+          @JsonKey(name: 'episode') final List<String>? episode,
+          @JsonKey(name: 'url') final String? url,
+          @JsonKey(name: 'created') final String? created}) =
+      _$CharacterDetailsDtoImpl;
 
-  factory _CharacterDetailsDto.fromJson(Map<String, dynamic> json) = _$CharacterDetailsDtoImpl.fromJson;
+  factory _CharacterDetailsDto.fromJson(Map<String, dynamic> json) =
+      _$CharacterDetailsDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -468,7 +493,8 @@ abstract class _CharacterDetailsDto implements CharacterDetailsDto {
 
   @override
   @JsonKey(ignore: true)
-  _$$CharacterDetailsDtoImplCopyWith<_$CharacterDetailsDtoImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$CharacterDetailsDtoImplCopyWith<_$CharacterDetailsDtoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Location _$LocationFromJson(Map<String, dynamic> json) {
@@ -486,19 +512,23 @@ mixin _$Location {
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LocationCopyWith<Location> get copyWith => throw _privateConstructorUsedError;
+  $LocationCopyWith<Location> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LocationCopyWith<$Res> {
-  factory $LocationCopyWith(Location value, $Res Function(Location) then) = _$LocationCopyWithImpl<$Res, Location>;
+  factory $LocationCopyWith(Location value, $Res Function(Location) then) =
+      _$LocationCopyWithImpl<$Res, Location>;
 
   @useResult
-  $Res call({@JsonKey(name: 'name') String? name, @JsonKey(name: 'url') String? url});
+  $Res call(
+      {@JsonKey(name: 'name') String? name, @JsonKey(name: 'url') String? url});
 }
 
 /// @nodoc
-class _$LocationCopyWithImpl<$Res, $Val extends Location> implements $LocationCopyWith<$Res> {
+class _$LocationCopyWithImpl<$Res, $Val extends Location>
+    implements $LocationCopyWith<$Res> {
   _$LocationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -527,17 +557,25 @@ class _$LocationCopyWithImpl<$Res, $Val extends Location> implements $LocationCo
 }
 
 /// @nodoc
-abstract class _$$LocationImplCopyWith<$Res> implements $LocationCopyWith<$Res> {
-  factory _$$LocationImplCopyWith(_$LocationImpl value, $Res Function(_$LocationImpl) then) = __$$LocationImplCopyWithImpl<$Res>;
+abstract class _$$LocationImplCopyWith<$Res>
+    implements $LocationCopyWith<$Res> {
+  factory _$$LocationImplCopyWith(
+          _$LocationImpl value, $Res Function(_$LocationImpl) then) =
+      __$$LocationImplCopyWithImpl<$Res>;
 
   @override
   @useResult
-  $Res call({@JsonKey(name: 'name') String? name, @JsonKey(name: 'url') String? url});
+  $Res call(
+      {@JsonKey(name: 'name') String? name, @JsonKey(name: 'url') String? url});
 }
 
 /// @nodoc
-class __$$LocationImplCopyWithImpl<$Res> extends _$LocationCopyWithImpl<$Res, _$LocationImpl> implements _$$LocationImplCopyWith<$Res> {
-  __$$LocationImplCopyWithImpl(_$LocationImpl _value, $Res Function(_$LocationImpl) _then) : super(_value, _then);
+class __$$LocationImplCopyWithImpl<$Res>
+    extends _$LocationCopyWithImpl<$Res, _$LocationImpl>
+    implements _$$LocationImplCopyWith<$Res> {
+  __$$LocationImplCopyWithImpl(
+      _$LocationImpl _value, $Res Function(_$LocationImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -561,9 +599,11 @@ class __$$LocationImplCopyWithImpl<$Res> extends _$LocationCopyWithImpl<$Res, _$
 /// @nodoc
 @JsonSerializable()
 class _$LocationImpl implements _Location {
-  const _$LocationImpl({@JsonKey(name: 'name') this.name, @JsonKey(name: 'url') this.url});
+  const _$LocationImpl(
+      {@JsonKey(name: 'name') this.name, @JsonKey(name: 'url') this.url});
 
-  factory _$LocationImpl.fromJson(Map<String, dynamic> json) => _$$LocationImplFromJson(json);
+  factory _$LocationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LocationImplFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -593,7 +633,8 @@ class _$LocationImpl implements _Location {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocationImplCopyWith<_$LocationImpl> get copyWith => __$$LocationImplCopyWithImpl<_$LocationImpl>(this, _$identity);
+  _$$LocationImplCopyWith<_$LocationImpl> get copyWith =>
+      __$$LocationImplCopyWithImpl<_$LocationImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -604,9 +645,12 @@ class _$LocationImpl implements _Location {
 }
 
 abstract class _Location implements Location {
-  const factory _Location({@JsonKey(name: 'name') final String? name, @JsonKey(name: 'url') final String? url}) = _$LocationImpl;
+  const factory _Location(
+      {@JsonKey(name: 'name') final String? name,
+      @JsonKey(name: 'url') final String? url}) = _$LocationImpl;
 
-  factory _Location.fromJson(Map<String, dynamic> json) = _$LocationImpl.fromJson;
+  factory _Location.fromJson(Map<String, dynamic> json) =
+      _$LocationImpl.fromJson;
 
   @override
   @JsonKey(name: 'name')
@@ -618,7 +662,8 @@ abstract class _Location implements Location {
 
   @override
   @JsonKey(ignore: true)
-  _$$LocationImplCopyWith<_$LocationImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$LocationImplCopyWith<_$LocationImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Origin _$OriginFromJson(Map<String, dynamic> json) {
@@ -641,14 +686,17 @@ mixin _$Origin {
 
 /// @nodoc
 abstract class $OriginCopyWith<$Res> {
-  factory $OriginCopyWith(Origin value, $Res Function(Origin) then) = _$OriginCopyWithImpl<$Res, Origin>;
+  factory $OriginCopyWith(Origin value, $Res Function(Origin) then) =
+      _$OriginCopyWithImpl<$Res, Origin>;
 
   @useResult
-  $Res call({@JsonKey(name: 'name') String? name, @JsonKey(name: 'url') String? url});
+  $Res call(
+      {@JsonKey(name: 'name') String? name, @JsonKey(name: 'url') String? url});
 }
 
 /// @nodoc
-class _$OriginCopyWithImpl<$Res, $Val extends Origin> implements $OriginCopyWith<$Res> {
+class _$OriginCopyWithImpl<$Res, $Val extends Origin>
+    implements $OriginCopyWith<$Res> {
   _$OriginCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -678,16 +726,23 @@ class _$OriginCopyWithImpl<$Res, $Val extends Origin> implements $OriginCopyWith
 
 /// @nodoc
 abstract class _$$OriginImplCopyWith<$Res> implements $OriginCopyWith<$Res> {
-  factory _$$OriginImplCopyWith(_$OriginImpl value, $Res Function(_$OriginImpl) then) = __$$OriginImplCopyWithImpl<$Res>;
+  factory _$$OriginImplCopyWith(
+          _$OriginImpl value, $Res Function(_$OriginImpl) then) =
+      __$$OriginImplCopyWithImpl<$Res>;
 
   @override
   @useResult
-  $Res call({@JsonKey(name: 'name') String? name, @JsonKey(name: 'url') String? url});
+  $Res call(
+      {@JsonKey(name: 'name') String? name, @JsonKey(name: 'url') String? url});
 }
 
 /// @nodoc
-class __$$OriginImplCopyWithImpl<$Res> extends _$OriginCopyWithImpl<$Res, _$OriginImpl> implements _$$OriginImplCopyWith<$Res> {
-  __$$OriginImplCopyWithImpl(_$OriginImpl _value, $Res Function(_$OriginImpl) _then) : super(_value, _then);
+class __$$OriginImplCopyWithImpl<$Res>
+    extends _$OriginCopyWithImpl<$Res, _$OriginImpl>
+    implements _$$OriginImplCopyWith<$Res> {
+  __$$OriginImplCopyWithImpl(
+      _$OriginImpl _value, $Res Function(_$OriginImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -711,9 +766,11 @@ class __$$OriginImplCopyWithImpl<$Res> extends _$OriginCopyWithImpl<$Res, _$Orig
 /// @nodoc
 @JsonSerializable()
 class _$OriginImpl implements _Origin {
-  const _$OriginImpl({@JsonKey(name: 'name') this.name, @JsonKey(name: 'url') this.url});
+  const _$OriginImpl(
+      {@JsonKey(name: 'name') this.name, @JsonKey(name: 'url') this.url});
 
-  factory _$OriginImpl.fromJson(Map<String, dynamic> json) => _$$OriginImplFromJson(json);
+  factory _$OriginImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OriginImplFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -743,7 +800,8 @@ class _$OriginImpl implements _Origin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OriginImplCopyWith<_$OriginImpl> get copyWith => __$$OriginImplCopyWithImpl<_$OriginImpl>(this, _$identity);
+  _$$OriginImplCopyWith<_$OriginImpl> get copyWith =>
+      __$$OriginImplCopyWithImpl<_$OriginImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -754,7 +812,9 @@ class _$OriginImpl implements _Origin {
 }
 
 abstract class _Origin implements Origin {
-  const factory _Origin({@JsonKey(name: 'name') final String? name, @JsonKey(name: 'url') final String? url}) = _$OriginImpl;
+  const factory _Origin(
+      {@JsonKey(name: 'name') final String? name,
+      @JsonKey(name: 'url') final String? url}) = _$OriginImpl;
 
   factory _Origin.fromJson(Map<String, dynamic> json) = _$OriginImpl.fromJson;
 
@@ -768,5 +828,6 @@ abstract class _Origin implements Origin {
 
   @override
   @JsonKey(ignore: true)
-  _$$OriginImplCopyWith<_$OriginImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$OriginImplCopyWith<_$OriginImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

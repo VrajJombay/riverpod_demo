@@ -20,7 +20,8 @@ class RecorderWidget extends ConsumerStatefulWidget {
   ConsumerState<RecorderWidget> createState() => _RecorderWidgetState();
 }
 
-class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBindingObserver, TickerProviderStateMixin {
+class _RecorderWidgetState extends ConsumerState<RecorderWidget>
+    with WidgetsBindingObserver, TickerProviderStateMixin {
   AnimationController? _animationController;
 
   @override
@@ -45,7 +46,8 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
     if (state == AppLifecycleState.resumed) {
       final permissionStatus = ref.read(recorderProvider).permissionStatus;
       print('permissionStatus==>$permissionStatus');
-      if (permissionStatus.value == PermissionStatus.permanentlyDenied && afterOpenSettings) {
+      if (permissionStatus.value == PermissionStatus.permanentlyDenied &&
+          afterOpenSettings) {
         await ref.read(recorderProvider.notifier).checkPermission();
         afterOpenSettings = false;
       }
@@ -93,7 +95,8 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
       ),
       child: Consumer(
         builder: (context, ref, child) {
-          final permissionStatus = ref.watch(recorderProvider.select((value) => value.permissionStatus));
+          final permissionStatus = ref.watch(
+              recorderProvider.select((value) => value.permissionStatus));
           return permissionStatus.when(data: (permissionStatus) {
             WidgetsBinding.instance.addPostFrameCallback((callback) async {
               if (permissionStatus.isDenied) {
@@ -107,12 +110,16 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
                       Center(
                         child: Consumer(
                           builder: (context, ref, child) {
-                            final recorderInitialize = ref.watch(recorderProvider.select((value) => value.recorderInitialize));
+                            final recorderInitialize = ref.watch(
+                                recorderProvider.select(
+                                    (value) => value.recorderInitialize));
                             return recorderInitialize.when(
                               data: (recorderInitialize) {
                                 return Consumer(
                                   builder: (context, ref, child) {
-                                    final recordingInProgress = ref.watch(recorderProvider.select((value) => value.recordingInProgress));
+                                    final recordingInProgress = ref.watch(
+                                        recorderProvider.select((value) =>
+                                            value.recordingInProgress));
                                     return recordingInProgress.when(
                                       data: (recordingInProgress) {
                                         if (recordingInProgress) {
@@ -124,15 +131,21 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
                                                   Center(
                                                     child: Lottie.asset(
                                                       AppLottie.lottieAudio,
-                                                      controller: _animationController,
+                                                      controller:
+                                                          _animationController,
                                                     ),
                                                   ),
                                                   Align(
-                                                    alignment: Alignment.bottomCenter,
+                                                    alignment:
+                                                        Alignment.bottomCenter,
                                                     child: IntrinsicHeight(
                                                       child: Row(
-                                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
                                                         children: [
                                                           _getStopButton(),
                                                           _getRecordingSlider(),
@@ -145,13 +158,18 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
                                               )
                                             : InkWell(
                                                 onTap: () async {
-                                                  await ref.read(recorderProvider.notifier).startRecorder();
+                                                  await ref
+                                                      .read(recorderProvider
+                                                          .notifier)
+                                                      .startRecorder();
                                                 },
-                                                child: _getStartRecordingWidget(),
+                                                child:
+                                                    _getStartRecordingWidget(),
                                               );
                                       },
                                       error: (error, _) {
-                                        return _getErrorWidget(error.toString());
+                                        return _getErrorWidget(
+                                            error.toString());
                                       },
                                       loading: () {
                                         return Center(
@@ -272,7 +290,8 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
   Widget _getRecordingSlider() {
     return Consumer(
       builder: (context, ref, child) {
-        final recordingSliderDuration = ref.watch(recorderProvider.select((value) => value.recordingSliderDuration));
+        final recordingSliderDuration = ref.watch(
+            recorderProvider.select((value) => value.recordingSliderDuration));
         return Expanded(
           child: Slider(
             min: 0,
@@ -290,7 +309,8 @@ class _RecorderWidgetState extends ConsumerState<RecorderWidget> with WidgetsBin
   Widget _getRecorderTimer() {
     return Consumer(
       builder: (context, ref, child) {
-        final recordingTime = ref.watch(recorderProvider.select((value) => value.recordingTime));
+        final recordingTime =
+            ref.watch(recorderProvider.select((value) => value.recordingTime));
         return Padding(
           padding: const EdgeInsets.only(right: 16.0),
           child: SizedBox(

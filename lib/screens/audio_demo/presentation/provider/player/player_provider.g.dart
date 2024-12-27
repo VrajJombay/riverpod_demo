@@ -6,7 +6,7 @@ part of 'player_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$playerHash() => r'1ec353d55d0c0b826ba55c04605d89e3930d26d0';
+String _$playerHash() => r'6a32fa8453a3f4ef4b4b442646d624115ea60e24';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,7 +29,8 @@ class _SystemHash {
   }
 }
 
-abstract class _$Player extends BuildlessAutoDisposeNotifier<PlayerDefaultState> {
+abstract class _$Player
+    extends BuildlessAutoDisposeNotifier<PlayerDefaultState> {
   late final String filePath;
 
   PlayerDefaultState build(
@@ -72,14 +73,16 @@ class PlayerFamily extends Family<PlayerDefaultState> {
   static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies => _allTransitiveDependencies;
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
 
   @override
   String? get name => r'playerProvider';
 }
 
 /// See also [Player].
-class PlayerProvider extends AutoDisposeNotifierProviderImpl<Player, PlayerDefaultState> {
+class PlayerProvider
+    extends AutoDisposeNotifierProviderImpl<Player, PlayerDefaultState> {
   /// See also [Player].
   PlayerProvider(
     String filePath,
@@ -87,7 +90,10 @@ class PlayerProvider extends AutoDisposeNotifierProviderImpl<Player, PlayerDefau
           () => Player()..filePath = filePath,
           from: playerProvider,
           name: r'playerProvider',
-          debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$playerHash,
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$playerHash,
           dependencies: PlayerFamily._dependencies,
           allTransitiveDependencies: PlayerFamily._allTransitiveDependencies,
           filePath: filePath,
@@ -131,7 +137,8 @@ class PlayerProvider extends AutoDisposeNotifierProviderImpl<Player, PlayerDefau
   }
 
   @override
-  AutoDisposeNotifierProviderElement<Player, PlayerDefaultState> createElement() {
+  AutoDisposeNotifierProviderElement<Player, PlayerDefaultState>
+      createElement() {
     return _PlayerProviderElement(this);
   }
 
@@ -154,7 +161,9 @@ mixin PlayerRef on AutoDisposeNotifierProviderRef<PlayerDefaultState> {
   String get filePath;
 }
 
-class _PlayerProviderElement extends AutoDisposeNotifierProviderElement<Player, PlayerDefaultState> with PlayerRef {
+class _PlayerProviderElement
+    extends AutoDisposeNotifierProviderElement<Player, PlayerDefaultState>
+    with PlayerRef {
   _PlayerProviderElement(super.provider);
 
   @override

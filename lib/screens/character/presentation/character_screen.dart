@@ -39,10 +39,10 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
       appBar: _appBar(),
       body: SafeArea(
         child: Consumer(builder: (context, ref, child) {
-          final AsyncValue<List<Result>?> characterList = ref.watch(characterNotifierProvider.select(
+          final AsyncValue<List<Result>?> characterList =
+              ref.watch(characterNotifierProvider.select(
             (value) => value.getCharacterData,
           ));
-          print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ main build ${characterList.asData?.value?.length}");
           return characterList.when(
             data: (characters) {
               return Consumer(builder: (context, ref, _) {
@@ -51,12 +51,16 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
                 ));
                 return isListView
                     ? _lisView(
-                        currentPage: ref.read(characterNotifierProvider).currentPage,
-                        totalPage: ref.read(characterNotifierProvider).totalPage,
+                        currentPage:
+                            ref.read(characterNotifierProvider).currentPage,
+                        totalPage:
+                            ref.read(characterNotifierProvider).totalPage,
                         characters: characters ?? [])
                     : _gridView(
-                        currentPage: ref.read(characterNotifierProvider).currentPage,
-                        totalPage: ref.read(characterNotifierProvider).totalPage,
+                        currentPage:
+                            ref.read(characterNotifierProvider).currentPage,
+                        totalPage:
+                            ref.read(characterNotifierProvider).totalPage,
                         characterState: characters);
               });
             },
@@ -74,10 +78,14 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
     );
   }
 
-  Widget _lisView({int? currentPage, int? totalPage, required List<Result> characters}) {
+  Widget _lisView(
+      {int? currentPage, int? totalPage, required List<Result> characters}) {
     return ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        itemCount: ((totalPage ?? 0) > (currentPage ?? 0) && _textEditingController.text.isEmpty) ? (characters?.length ?? 0) + 1 : (characters?.length ?? 0),
+        itemCount: ((totalPage ?? 0) > (currentPage ?? 0) &&
+                _textEditingController.text.isEmpty)
+            ? (characters?.length ?? 0) + 1
+            : (characters?.length ?? 0),
         itemBuilder: (context, index) {
           Result? result;
           if (index != characters.length) {
@@ -85,11 +93,13 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
           }
           return index == characters.length
               ? Consumer(builder: (context, PreferencesRef, child) {
-                  final loadingData = ref.watch(characterNotifierProvider.select((value) => value.loadingData));
+                  final loadingData = ref.watch(characterNotifierProvider
+                      .select((value) => value.loadingData));
                   return loadingData.when(data: (loadingData) {
-                    print("#@@@@@@@@@@@@@@ getting cararesssasasas");
                     WidgetsBinding.instance.addPostFrameCallback((_) {
-                      ref.read(characterNotifierProvider.notifier).getCharacter();
+                      ref
+                          .read(characterNotifierProvider.notifier)
+                          .getCharacter();
                     });
                     return SizedBox.shrink();
                   }, error: (error, _) {
@@ -98,30 +108,42 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
                     return Center(child: CircularProgressIndicator());
                   });
                 })
-              : GestureDetector(
+              : InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.characterDetailsRoute,
-                        arguments: CharacterDetailsArg(name: result?.name ?? '', id: result?.id ?? 0));
+                    Navigator.pushNamed(
+                        context, AppRoutes.characterDetailsRoute,
+                        arguments: CharacterDetailsArg(
+                            name: result?.name ?? '', id: result?.id ?? 0));
                   },
                   child: Stack(
                     alignment: AlignmentDirectional.topEnd,
                     children: [
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 5),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.black12),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: Colors.black12),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(8),
+                                  bottomLeft: Radius.circular(8)),
                               child: Image.network(
                                 result?.img ?? '',
                                 fit: BoxFit.scaleDown,
-                                loadingBuilder: (context, child, loadingProgress) {
+                                loadingBuilder:
+                                    (context, child, loadingProgress) {
                                   if (loadingProgress == null) {
                                     return child;
                                   } else {
-                                    return SizedBox(height: 125, width: 125, child: Center(child: CircularProgressIndicator()));
+                                    return SizedBox(
+                                        height: 125,
+                                        width: 125,
+                                        child: Center(
+                                            child:
+                                                CircularProgressIndicator()));
                                   }
                                 },
                                 errorBuilder: (context, _, __) {
@@ -142,14 +164,19 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
                                 children: [
                                   Text(
                                     result?.name ?? '',
-                                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  Text('${result?.status ?? ''} - ${result?.species ?? ' '}'),
+                                  Text(
+                                      '${result?.status ?? ''} - ${result?.species ?? ' '}'),
                                   Text('Last known location:'),
-                                  Text('${result?.locationName ?? ''}', overflow: TextOverflow.ellipsis),
+                                  Text('${result?.locationName ?? ''}',
+                                      overflow: TextOverflow.ellipsis),
                                   Text('First seen in:'),
-                                  Text('${result?.originName ?? ''}', overflow: TextOverflow.ellipsis),
+                                  Text('${result?.originName ?? ''}',
+                                      overflow: TextOverflow.ellipsis),
                                 ],
                               ),
                             ),
@@ -158,13 +185,18 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             if (result?.isFavorite != true) {
-                              ref.read(characterNotifierProvider.notifier).addCharacterToFavorite(result?.id ?? 0, index);
+                              ref
+                                  .read(characterNotifierProvider.notifier)
+                                  .addCharacterToFavorite(
+                                      result?.id ?? 0, index);
                             }
                           },
-                          child: (result?.isFavorite ?? false) ? Icon(Icons.favorite, color: Colors.red) : Icon(Icons.favorite_border),
+                          child: (result?.isFavorite ?? false)
+                              ? Icon(Icons.favorite, color: Colors.red)
+                              : Icon(Icons.favorite_border),
                         ),
                       ),
                     ],
@@ -173,12 +205,16 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
         });
   }
 
-  Widget _gridView({int? currentPage, int? totalPage, List<Result>? characterState}) {
+  Widget _gridView(
+      {int? currentPage, int? totalPage, List<Result>? characterState}) {
     return GridView.builder(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        itemCount:
-            ((totalPage ?? 0) > (currentPage ?? 0) && _textEditingController.text.isEmpty) ? (characterState?.length ?? 0) + 1 : (characterState?.length ?? 0),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.55, crossAxisSpacing: 10),
+        itemCount: ((totalPage ?? 0) > (currentPage ?? 0) &&
+                _textEditingController.text.isEmpty)
+            ? (characterState?.length ?? 0) + 1
+            : (characterState?.length ?? 0),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, childAspectRatio: 0.55, crossAxisSpacing: 10),
         itemBuilder: (context, index) {
           Result? result;
           if (index != characterState?.length) {
@@ -186,11 +222,13 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
           }
           return index == characterState?.length
               ? Consumer(builder: (context, PreferencesRef, child) {
-                  final loadingData = ref.watch(characterNotifierProvider.select((value) => value.loadingData));
+                  final loadingData = ref.watch(characterNotifierProvider
+                      .select((value) => value.loadingData));
                   return loadingData.when(data: (loadingData) {
-                    print("#@@@@@@@@@@@@@@ getting cararesssasasas");
                     WidgetsBinding.instance.addPostFrameCallback((_) {
-                      ref.read(characterNotifierProvider.notifier).getCharacter();
+                      ref
+                          .read(characterNotifierProvider.notifier)
+                          .getCharacter();
                     });
                     return SizedBox.shrink();
                   }, error: (error, _) {
@@ -199,19 +237,25 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
                     return Center(child: CircularProgressIndicator());
                   });
                 })
-              : GestureDetector(
+              : InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.characterDetailsRoute,
-                        arguments: CharacterDetailsArg(name: result?.name ?? '', id: result?.id ?? 0));
+                    Navigator.pushNamed(
+                        context, AppRoutes.characterDetailsRoute,
+                        arguments: CharacterDetailsArg(
+                            name: result?.name ?? '', id: result?.id ?? 0));
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(vertical: 5),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.black12),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.black12),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ClipRRect(
-                          borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(8),
+                              topRight: Radius.circular(8)),
                           child: Image.network(
                             result?.img ?? '',
                             fit: BoxFit.scaleDown,
@@ -219,7 +263,10 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
                               if (loadingProgress == null) {
                                 return child;
                               } else {
-                                return SizedBox(height: 150, child: Center(child: CircularProgressIndicator()));
+                                return SizedBox(
+                                    height: 150,
+                                    child: Center(
+                                        child: CircularProgressIndicator()));
                               }
                             },
 
@@ -241,14 +288,20 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
                               children: [
                                 Text(
                                   result?.name ?? '',
-                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                Text('${result?.status ?? ''} - ${result?.species ?? ' '}', overflow: TextOverflow.ellipsis),
+                                Text(
+                                    '${result?.status ?? ''} - ${result?.species ?? ' '}',
+                                    overflow: TextOverflow.ellipsis),
                                 Text('Last known location:'),
-                                Text('${result?.locationName ?? ''}', overflow: TextOverflow.ellipsis),
+                                Text('${result?.locationName ?? ''}',
+                                    overflow: TextOverflow.ellipsis),
                                 Text('First seen in:'),
-                                Text('${result?.originName ?? ''}', overflow: TextOverflow.ellipsis),
+                                Text('${result?.originName ?? ''}',
+                                    overflow: TextOverflow.ellipsis),
                               ],
                             ),
                           ),
@@ -269,7 +322,11 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: InkWell(
             onTap: () {
-              Navigator.pushNamed(context, AppRoutes.favoriteRoute);
+              Navigator.pushNamed(context, AppRoutes.favoriteRoute).then(
+                (val) {
+                  ref.read(characterNotifierProvider.notifier).getCharacter();
+                },
+              );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -288,9 +345,11 @@ class _CharacterScreenState extends ConsumerState<CharacterScreen> {
                 (value) => value.isListView,
               ));
 
-              return GestureDetector(
+              return InkWell(
                 onTap: () {
-                  ref.read(characterNotifierProvider.notifier).onChangeView(isListView);
+                  ref
+                      .read(characterNotifierProvider.notifier)
+                      .onChangeView(isListView);
                 },
                 child: Container(
                   decoration: BoxDecoration(

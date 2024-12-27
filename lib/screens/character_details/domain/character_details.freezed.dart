@@ -29,19 +29,29 @@ mixin _$CharacterDetails {
   String? get img => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CharacterDetailsCopyWith<CharacterDetails> get copyWith => throw _privateConstructorUsedError;
+  $CharacterDetailsCopyWith<CharacterDetails> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CharacterDetailsCopyWith<$Res> {
-  factory $CharacterDetailsCopyWith(CharacterDetails value, $Res Function(CharacterDetails) then) = _$CharacterDetailsCopyWithImpl<$Res, CharacterDetails>;
+  factory $CharacterDetailsCopyWith(
+          CharacterDetails value, $Res Function(CharacterDetails) then) =
+      _$CharacterDetailsCopyWithImpl<$Res, CharacterDetails>;
 
   @useResult
-  $Res call({int? id, String? name, String? status, String? species, List<String>? episode, String? img});
+  $Res call(
+      {int? id,
+      String? name,
+      String? status,
+      String? species,
+      List<String>? episode,
+      String? img});
 }
 
 /// @nodoc
-class _$CharacterDetailsCopyWithImpl<$Res, $Val extends CharacterDetails> implements $CharacterDetailsCopyWith<$Res> {
+class _$CharacterDetailsCopyWithImpl<$Res, $Val extends CharacterDetails>
+    implements $CharacterDetailsCopyWith<$Res> {
   _$CharacterDetailsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -90,19 +100,30 @@ class _$CharacterDetailsCopyWithImpl<$Res, $Val extends CharacterDetails> implem
 }
 
 /// @nodoc
-abstract class _$$CharacterDetailsImplCopyWith<$Res> implements $CharacterDetailsCopyWith<$Res> {
-  factory _$$CharacterDetailsImplCopyWith(_$CharacterDetailsImpl value, $Res Function(_$CharacterDetailsImpl) then) =
+abstract class _$$CharacterDetailsImplCopyWith<$Res>
+    implements $CharacterDetailsCopyWith<$Res> {
+  factory _$$CharacterDetailsImplCopyWith(_$CharacterDetailsImpl value,
+          $Res Function(_$CharacterDetailsImpl) then) =
       __$$CharacterDetailsImplCopyWithImpl<$Res>;
 
   @override
   @useResult
-  $Res call({int? id, String? name, String? status, String? species, List<String>? episode, String? img});
+  $Res call(
+      {int? id,
+      String? name,
+      String? status,
+      String? species,
+      List<String>? episode,
+      String? img});
 }
 
 /// @nodoc
-class __$$CharacterDetailsImplCopyWithImpl<$Res> extends _$CharacterDetailsCopyWithImpl<$Res, _$CharacterDetailsImpl>
+class __$$CharacterDetailsImplCopyWithImpl<$Res>
+    extends _$CharacterDetailsCopyWithImpl<$Res, _$CharacterDetailsImpl>
     implements _$$CharacterDetailsImplCopyWith<$Res> {
-  __$$CharacterDetailsImplCopyWithImpl(_$CharacterDetailsImpl _value, $Res Function(_$CharacterDetailsImpl) _then) : super(_value, _then);
+  __$$CharacterDetailsImplCopyWithImpl(_$CharacterDetailsImpl _value,
+      $Res Function(_$CharacterDetailsImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -146,7 +167,14 @@ class __$$CharacterDetailsImplCopyWithImpl<$Res> extends _$CharacterDetailsCopyW
 /// @nodoc
 
 class _$CharacterDetailsImpl implements _CharacterDetails {
-  _$CharacterDetailsImpl({this.id, this.name, this.status, this.species, final List<String>? episode, this.img}) : _episode = episode;
+  _$CharacterDetailsImpl(
+      {this.id,
+      this.name,
+      this.status,
+      this.species,
+      final List<String>? episode,
+      this.img})
+      : _episode = episode;
 
   @override
   final int? id;
@@ -189,17 +217,25 @@ class _$CharacterDetailsImpl implements _CharacterDetails {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, status, species, const DeepCollectionEquality().hash(_episode), img);
+  int get hashCode => Object.hash(runtimeType, id, name, status, species,
+      const DeepCollectionEquality().hash(_episode), img);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CharacterDetailsImplCopyWith<_$CharacterDetailsImpl> get copyWith => __$$CharacterDetailsImplCopyWithImpl<_$CharacterDetailsImpl>(this, _$identity);
+  _$$CharacterDetailsImplCopyWith<_$CharacterDetailsImpl> get copyWith =>
+      __$$CharacterDetailsImplCopyWithImpl<_$CharacterDetailsImpl>(
+          this, _$identity);
 }
 
 abstract class _CharacterDetails implements CharacterDetails {
-  factory _CharacterDetails({final int? id, final String? name, final String? status, final String? species, final List<String>? episode, final String? img}) =
-      _$CharacterDetailsImpl;
+  factory _CharacterDetails(
+      {final int? id,
+      final String? name,
+      final String? status,
+      final String? species,
+      final List<String>? episode,
+      final String? img}) = _$CharacterDetailsImpl;
 
   @override
   int? get id;
@@ -221,5 +257,6 @@ abstract class _CharacterDetails implements CharacterDetails {
 
   @override
   @JsonKey(ignore: true)
-  _$$CharacterDetailsImplCopyWith<_$CharacterDetailsImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$CharacterDetailsImplCopyWith<_$CharacterDetailsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'character_dto.freezed.dart';
+
 part 'character_dto.g.dart';
 
 @freezed
@@ -10,7 +11,8 @@ class CharacterDto with _$CharacterDto {
     @JsonKey(name: 'results') List<Results>? results,
   }) = _CharacterDto;
 
-  factory CharacterDto.fromJson(Map<String, Object?> json) => _$CharacterDtoFromJson(json);
+  factory CharacterDto.fromJson(Map<String, Object?> json) =>
+      _$CharacterDtoFromJson(json);
 }
 
 @freezed
@@ -30,7 +32,8 @@ class Results with _$Results {
     @JsonKey(name: 'created') String? created,
   }) = _Results;
 
-  factory Results.fromJson(Map<String, Object?> json) => _$ResultsFromJson(json);
+  factory Results.fromJson(Map<String, Object?> json) =>
+      _$ResultsFromJson(json);
 }
 
 @freezed
@@ -40,7 +43,8 @@ class Location with _$Location {
     @JsonKey(name: 'url') String? url,
   }) = _Location;
 
-  factory Location.fromJson(Map<String, Object?> json) => _$LocationFromJson(json);
+  factory Location.fromJson(Map<String, Object?> json) =>
+      _$LocationFromJson(json);
 }
 
 @freezed

@@ -14,7 +14,8 @@ class CharacterApiServices {
 
   Future<CharacterDto> getCharacter(int page) async {
     try {
-      final response = await _apiClient.dio.get('${ApiConstants.characterURL}$page');
+      final response =
+          await _apiClient.dio.get('${ApiConstants.characterURL}$page');
       return CharacterDto.fromJson(response.data);
     } on DioException catch (dioException) {
       throw dioException.appError;
@@ -25,7 +26,8 @@ class CharacterApiServices {
 
   Future<CharacterDetailsDto> getCharacterDetails(int? id) async {
     try {
-      final response = await _apiClient.dio.get('${ApiConstants.characterDetailsURL}$id');
+      final response =
+          await _apiClient.dio.get('${ApiConstants.characterDetailsURL}$id');
       return CharacterDetailsDto.fromJson(response.data);
     } on DioException catch (dioException) {
       throw dioException.appError;

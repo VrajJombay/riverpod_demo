@@ -6,14 +6,18 @@ part of 'api_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$characterApiServicesHash() => r'35a8dcbc95750d1da037ce3a1e990d73cf3d53b1';
+String _$characterApiServicesHash() =>
+    r'35a8dcbc95750d1da037ce3a1e990d73cf3d53b1';
 
 /// See also [characterApiServices].
 @ProviderFor(characterApiServices)
-final characterApiServicesProvider = AutoDisposeProvider<CharacterApiServices>.internal(
+final characterApiServicesProvider =
+    AutoDisposeProvider<CharacterApiServices>.internal(
   characterApiServices,
   name: r'characterApiServicesProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$characterApiServicesHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$characterApiServicesHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

@@ -11,7 +11,8 @@ part 'character_details_repository.g.dart';
 @riverpod
 CharacterDetailsRepository characterRepository(Ref ref) {
   final characterApiServices = ref.read(characterApiServicesProvider);
-  return CharacterDetailsRepositoryImpl(characterApiServices: characterApiServices);
+  return CharacterDetailsRepositoryImpl(
+      characterApiServices: characterApiServices);
 }
 
 abstract class CharacterDetailsRepository {
@@ -21,11 +22,14 @@ abstract class CharacterDetailsRepository {
 class CharacterDetailsRepositoryImpl extends CharacterDetailsRepository {
   final CharacterApiServices _characterApiServices;
 
-  CharacterDetailsRepositoryImpl({required CharacterApiServices characterApiServices}) : _characterApiServices = characterApiServices;
+  CharacterDetailsRepositoryImpl(
+      {required CharacterApiServices characterApiServices})
+      : _characterApiServices = characterApiServices;
 
   @override
   Future<CharacterDetails> getCharactersDetails(int? id) async {
-    final characterDetails = await _characterApiServices.getCharacterDetails(id);
+    final characterDetails =
+        await _characterApiServices.getCharacterDetails(id);
     return characterDetails.mapToCharacter;
   }
 }

@@ -32,16 +32,21 @@ class Player extends _$Player {
       await session?.configure(
         AudioSessionConfiguration(
           avAudioSessionCategory: AVAudioSessionCategory.playAndRecord,
-          avAudioSessionCategoryOptions: AVAudioSessionCategoryOptions.allowBluetooth | AVAudioSessionCategoryOptions.defaultToSpeaker,
+          avAudioSessionCategoryOptions:
+              AVAudioSessionCategoryOptions.allowBluetooth |
+                  AVAudioSessionCategoryOptions.defaultToSpeaker,
           avAudioSessionMode: AVAudioSessionMode.spokenAudio,
-          avAudioSessionRouteSharingPolicy: AVAudioSessionRouteSharingPolicy.defaultPolicy,
-          avAudioSessionSetActiveOptions: AVAudioSessionSetActiveOptions.notifyOthersOnDeactivation,
+          avAudioSessionRouteSharingPolicy:
+              AVAudioSessionRouteSharingPolicy.defaultPolicy,
+          avAudioSessionSetActiveOptions:
+              AVAudioSessionSetActiveOptions.notifyOthersOnDeactivation,
           androidAudioAttributes: const AndroidAudioAttributes(
             contentType: AndroidAudioContentType.speech,
             flags: AndroidAudioFlags.none,
             usage: AndroidAudioUsage.voiceCommunication,
           ),
-          androidAudioFocusGainType: AndroidAudioFocusGainType.gainTransientExclusive,
+          androidAudioFocusGainType:
+              AndroidAudioFocusGainType.gainTransientExclusive,
           androidWillPauseWhenDucked: true,
         ),
       );
@@ -69,12 +74,15 @@ class Player extends _$Player {
           },
         );
         await _player.pausePlayer();
-        state = state.copyWith(playerData: AsyncData(false), maxDuration: (duration?.inMilliseconds ?? 0.0).toDouble());
+        state = state.copyWith(
+            playerData: AsyncData(false),
+            maxDuration: (duration?.inMilliseconds ?? 0.0).toDouble());
       } catch (e, stackTrace) {
         state = state.copyWith(playerData: AsyncError(e, stackTrace));
       }
     } else {
-      state = state.copyWith(playerData: AsyncError('File Not Found', StackTrace.empty));
+      state = state.copyWith(
+          playerData: AsyncError('File Not Found', StackTrace.empty));
       return;
     }
     _addListener();
@@ -112,11 +120,15 @@ class Player extends _$Player {
       _playerSubscription = _player.onProgress!.listen((position) {
         var maxDuration = position.duration.inMilliseconds.toDouble();
         if (maxDuration <= 0) maxDuration = 0;
-        var sliderCurrentPosition = min(position.position.inMilliseconds.toDouble(), maxDuration);
+        var sliderCurrentPosition =
+            min(position.position.inMilliseconds.toDouble(), maxDuration);
         if (sliderCurrentPosition < 0) sliderCurrentPosition = 0;
-        var date = DateTime.fromMillisecondsSinceEpoch(position.position.inMilliseconds, isUtc: true);
+        var date = DateTime.fromMillisecondsSinceEpoch(
+            position.position.inMilliseconds,
+            isUtc: true);
         var txt = DateFormat('mm:ss').format(date);
-        state = state.copyWith(playerSliderDuration: sliderCurrentPosition, playerTime: txt);
+        state = state.copyWith(
+            playerSliderDuration: sliderCurrentPosition, playerTime: txt);
       });
     } catch (e, stackTrace) {
       state = state.copyWith(playerData: AsyncError(e, stackTrace));

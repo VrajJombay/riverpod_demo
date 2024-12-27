@@ -8,7 +8,11 @@ import '../../../../utils/app_lottie.dart';
 import '../provider/player/player_provider.dart';
 
 class PlayerWidget extends ConsumerStatefulWidget {
-  const PlayerWidget({super.key, required this.fileUrl, required this.onDeleteIconClicked, required this.isNetworkUrl});
+  const PlayerWidget(
+      {super.key,
+      required this.fileUrl,
+      required this.onDeleteIconClicked,
+      required this.isNetworkUrl});
 
   final String fileUrl;
   final bool isNetworkUrl;
@@ -18,7 +22,8 @@ class PlayerWidget extends ConsumerStatefulWidget {
   ConsumerState<PlayerWidget> createState() => _PlayerWidgetState();
 }
 
-class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBindingObserver, TickerProviderStateMixin {
+class _PlayerWidgetState extends ConsumerState<PlayerWidget>
+    with WidgetsBindingObserver, TickerProviderStateMixin {
   AnimationController? _animationController;
 
   @override
@@ -60,7 +65,8 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
       ),
       child: Consumer(
         builder: (context, ref, child) {
-          final playerData = ref.watch(playerProvider(widget.fileUrl).select((value) => value.playerData));
+          final playerData = ref.watch(playerProvider(widget.fileUrl)
+              .select((value) => value.playerData));
           return playerData.when(
             data: (playerData) {
               if (playerData) {
@@ -111,7 +117,9 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
       padding: const EdgeInsets.only(left: 16.0),
       child: InkWell(
         onTap: () async {
-          await ref.read(playerProvider(widget.fileUrl).notifier).playAndPausePlayer();
+          await ref
+              .read(playerProvider(widget.fileUrl).notifier)
+              .playAndPausePlayer();
         },
         child: playerData
             ? Icon(
@@ -131,8 +139,10 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
   Widget _getPlayerSlider() {
     return Consumer(
       builder: (context, ref, child) {
-        final playerSliderDuration = ref.watch(playerProvider(widget.fileUrl).select((value) => value.playerSliderDuration));
-        final maxDuration = ref.read(playerProvider(widget.fileUrl)).maxDuration;
+        final playerSliderDuration = ref.watch(playerProvider(widget.fileUrl)
+            .select((value) => value.playerSliderDuration));
+        final maxDuration =
+            ref.read(playerProvider(widget.fileUrl)).maxDuration;
         return Expanded(
           child: Slider(
             min: 0,
@@ -152,7 +162,8 @@ class _PlayerWidgetState extends ConsumerState<PlayerWidget> with WidgetsBinding
   Widget _getPlayerTimer() {
     return Consumer(
       builder: (context, ref, child) {
-        final playerTime = ref.watch(playerProvider(widget.fileUrl).select((value) => value.playerTime));
+        final playerTime = ref.watch(
+            playerProvider(widget.fileUrl).select((value) => value.playerTime));
         return Padding(
           padding: const EdgeInsets.only(right: 16.0),
           child: SizedBox(

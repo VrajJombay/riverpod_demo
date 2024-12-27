@@ -16,14 +16,18 @@ class CharacterDetailsScreen extends ConsumerStatefulWidget {
   final CharacterDetailsArg arg;
 
   @override
-  ConsumerState<CharacterDetailsScreen> createState() => _CharacterDetailsScreenState();
+  ConsumerState<CharacterDetailsScreen> createState() =>
+      _CharacterDetailsScreenState();
 }
 
-class _CharacterDetailsScreenState extends ConsumerState<CharacterDetailsScreen> {
+class _CharacterDetailsScreenState
+    extends ConsumerState<CharacterDetailsScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((callback) {
-      ref.read(characterDetailsNotifierProvider.notifier).getCharacterDetails(widget.arg.id);
+      ref
+          .read(characterDetailsNotifierProvider.notifier)
+          .getCharacterDetails(widget.arg.id);
     });
 
     super.initState();
@@ -31,7 +35,8 @@ class _CharacterDetailsScreenState extends ConsumerState<CharacterDetailsScreen>
 
   @override
   Widget build(BuildContext context) {
-    final characterDetails = ref.watch(characterDetailsNotifierProvider.select((value) => value.characterDetails));
+    final characterDetails = ref.watch(characterDetailsNotifierProvider
+        .select((value) => value.characterDetails));
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.arg.name),
@@ -47,9 +52,12 @@ class _CharacterDetailsScreenState extends ConsumerState<CharacterDetailsScreen>
                 children: [
                   _detailsWidget(characterDetailsState),
                   Gap(10),
-                  Text('Episode', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+                  Text('Episode',
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
                   Gap(10),
-                  if (characterDetailsState?.episode?.isNotEmpty ?? false) _listView(characterDetailsState),
+                  if (characterDetailsState?.episode?.isNotEmpty ?? false)
+                    _listView(characterDetailsState),
                 ],
               ),
             );
@@ -95,7 +103,8 @@ class _CharacterDetailsScreenState extends ConsumerState<CharacterDetailsScreen>
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 overflow: TextOverflow.ellipsis,
               ),
-              Text('${characterDetailsState?.status ?? ''} - ${characterDetailsState?.species ?? ' '}'),
+              Text(
+                  '${characterDetailsState?.status ?? ''} - ${characterDetailsState?.species ?? ' '}'),
             ],
           ),
         ),

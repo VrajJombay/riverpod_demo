@@ -16,9 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CharacterState {
-  AsyncValue<List<Result>?> get getCharacterData => throw _privateConstructorUsedError;
+  AsyncValue<List<Result>?> get getCharacterData =>
+      throw _privateConstructorUsedError;
 
-  AsyncValue<List<Result>?> get getCharacterDataForSearch => throw _privateConstructorUsedError;
+  AsyncValue<List<Result>?> get getCharacterDataForSearch =>
+      throw _privateConstructorUsedError;
 
   bool get isListView => throw _privateConstructorUsedError;
 
@@ -29,12 +31,15 @@ mixin _$CharacterState {
   AsyncValue<void> get loadingData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CharacterStateCopyWith<CharacterState> get copyWith => throw _privateConstructorUsedError;
+  $CharacterStateCopyWith<CharacterState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CharacterStateCopyWith<$Res> {
-  factory $CharacterStateCopyWith(CharacterState value, $Res Function(CharacterState) then) = _$CharacterStateCopyWithImpl<$Res, CharacterState>;
+  factory $CharacterStateCopyWith(
+          CharacterState value, $Res Function(CharacterState) then) =
+      _$CharacterStateCopyWithImpl<$Res, CharacterState>;
 
   @useResult
   $Res call(
@@ -47,7 +52,8 @@ abstract class $CharacterStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState> implements $CharacterStateCopyWith<$Res> {
+class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState>
+    implements $CharacterStateCopyWith<$Res> {
   _$CharacterStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -96,8 +102,11 @@ class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState> implements
 }
 
 /// @nodoc
-abstract class _$$CharacterStateImplCopyWith<$Res> implements $CharacterStateCopyWith<$Res> {
-  factory _$$CharacterStateImplCopyWith(_$CharacterStateImpl value, $Res Function(_$CharacterStateImpl) then) = __$$CharacterStateImplCopyWithImpl<$Res>;
+abstract class _$$CharacterStateImplCopyWith<$Res>
+    implements $CharacterStateCopyWith<$Res> {
+  factory _$$CharacterStateImplCopyWith(_$CharacterStateImpl value,
+          $Res Function(_$CharacterStateImpl) then) =
+      __$$CharacterStateImplCopyWithImpl<$Res>;
 
   @override
   @useResult
@@ -111,8 +120,12 @@ abstract class _$$CharacterStateImplCopyWith<$Res> implements $CharacterStateCop
 }
 
 /// @nodoc
-class __$$CharacterStateImplCopyWithImpl<$Res> extends _$CharacterStateCopyWithImpl<$Res, _$CharacterStateImpl> implements _$$CharacterStateImplCopyWith<$Res> {
-  __$$CharacterStateImplCopyWithImpl(_$CharacterStateImpl _value, $Res Function(_$CharacterStateImpl) _then) : super(_value, _then);
+class __$$CharacterStateImplCopyWithImpl<$Res>
+    extends _$CharacterStateCopyWithImpl<$Res, _$CharacterStateImpl>
+    implements _$$CharacterStateImplCopyWith<$Res> {
+  __$$CharacterStateImplCopyWithImpl(
+      _$CharacterStateImpl _value, $Res Function(_$CharacterStateImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -193,21 +206,37 @@ class _$CharacterStateImpl implements _CharacterState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CharacterStateImpl &&
-            (identical(other.getCharacterData, getCharacterData) || other.getCharacterData == getCharacterData) &&
-            (identical(other.getCharacterDataForSearch, getCharacterDataForSearch) || other.getCharacterDataForSearch == getCharacterDataForSearch) &&
-            (identical(other.isListView, isListView) || other.isListView == isListView) &&
-            (identical(other.currentPage, currentPage) || other.currentPage == currentPage) &&
-            (identical(other.totalPage, totalPage) || other.totalPage == totalPage) &&
-            (identical(other.loadingData, loadingData) || other.loadingData == loadingData));
+            (identical(other.getCharacterData, getCharacterData) ||
+                other.getCharacterData == getCharacterData) &&
+            (identical(other.getCharacterDataForSearch,
+                    getCharacterDataForSearch) ||
+                other.getCharacterDataForSearch == getCharacterDataForSearch) &&
+            (identical(other.isListView, isListView) ||
+                other.isListView == isListView) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
+            (identical(other.totalPage, totalPage) ||
+                other.totalPage == totalPage) &&
+            (identical(other.loadingData, loadingData) ||
+                other.loadingData == loadingData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, getCharacterData, getCharacterDataForSearch, isListView, currentPage, totalPage, loadingData);
+  int get hashCode => Object.hash(
+      runtimeType,
+      getCharacterData,
+      getCharacterDataForSearch,
+      isListView,
+      currentPage,
+      totalPage,
+      loadingData);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CharacterStateImplCopyWith<_$CharacterStateImpl> get copyWith => __$$CharacterStateImplCopyWithImpl<_$CharacterStateImpl>(this, _$identity);
+  _$$CharacterStateImplCopyWith<_$CharacterStateImpl> get copyWith =>
+      __$$CharacterStateImplCopyWithImpl<_$CharacterStateImpl>(
+          this, _$identity);
 }
 
 abstract class _CharacterState implements CharacterState {
@@ -239,5 +268,6 @@ abstract class _CharacterState implements CharacterState {
 
   @override
   @JsonKey(ignore: true)
-  _$$CharacterStateImplCopyWith<_$CharacterStateImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$CharacterStateImplCopyWith<_$CharacterStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

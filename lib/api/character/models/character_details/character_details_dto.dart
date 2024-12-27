@@ -20,7 +20,8 @@ class CharacterDetailsDto with _$CharacterDetailsDto {
     @JsonKey(name: 'created') String? created,
   }) = _CharacterDetailsDto;
 
-  factory CharacterDetailsDto.fromJson(Map<String, Object?> json) => _$CharacterDetailsDtoFromJson(json);
+  factory CharacterDetailsDto.fromJson(Map<String, Object?> json) =>
+      _$CharacterDetailsDtoFromJson(json);
 }
 
 @freezed
@@ -30,7 +31,8 @@ class Location with _$Location {
     @JsonKey(name: 'url') String? url,
   }) = _Location;
 
-  factory Location.fromJson(Map<String, Object?> json) => _$LocationFromJson(json);
+  factory Location.fromJson(Map<String, Object?> json) =>
+      _$LocationFromJson(json);
 }
 
 @freezed

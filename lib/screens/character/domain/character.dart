@@ -22,6 +22,7 @@ class Result with _$Result {
     String? locationName,
     String? originName,
     bool? isFavorite,
+    String? createdAt,
   }) = _Result;
 
   factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);
